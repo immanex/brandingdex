@@ -18,7 +18,19 @@ Sveltia can edit a local checkout without remote authentication. Its local repos
 
 ## Live editing
 
-The admin is connected to the `immanex/brandingdex` repository in `src/static/admin/config.yml`; change it there if the repository moves. GitHub sign-in also needs an OAuth client configured for the chosen hosting provider, or editors can use GitHub access tokens. Give editors write access to the repository. Each saved content change is a repository commit and should trigger the site's normal deployment build.
+The admin is connected to the `immanex/brandingdex` repository in `src/static/admin/config.yml`; change it there if the repository moves. Give editors write access to the repository. Each saved content change is a repository commit and triggers a new Netlify deploy.
+
+GitHub sign-in on the live site goes through Netlify:
+
+1. Create a GitHub OAuth app at <https://github.com/settings/applications/new>. Use the site address as the homepage URL and `https://api.netlify.com/auth/done` as the authorization callback URL.
+2. Copy the client ID and generate a client secret.
+3. In Netlify, open **Project configuration → Security → OAuth**, choose **Install provider → GitHub**, and paste both values. Do not use Netlify Identity.
+
+Editors can also sign in with a GitHub personal access token instead.
+
+## Form submissions
+
+The project brief forms and newsletter sign-ups use Netlify Forms. After the first deploy, open **Forms** in Netlify and choose **Enable form detection**, then redeploy. Submissions appear under three forms: `project-brief` (contact page), `quick-brief` (home page), and `newsletter`. Add email notifications under **Project configuration → Notifications → Emails and webhooks → Form submission notifications**.
 
 The site build writes static files to `dist/`; run it with `npm run build`.
 

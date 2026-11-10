@@ -18,8 +18,7 @@ function privacy(site) {
   if (site.analytics.cloudflareToken) analytics.push("- **Cloudflare Web Analytics** counts page views without cookies and without identifying individual visitors.");
   if (!analytics.length) analytics.push("We do not currently use analytics or advertising cookies on this website.");
   const providers = [
-    "- **Brevo** (Sendinblue SAS), which delivers our emails and stores our newsletter list.",
-    "- **Our website hosting provider**, which delivers the website and processes technical data such as your IP address to keep it secure."
+    "- **Netlify**, which hosts the website, receives the forms you send us, and processes technical data such as your IP address to keep it secure."
   ];
   if (site.analytics.ga4Id) providers.push("- **Google**, for Google Analytics, if you accept analytics cookies.");
   if (site.analytics.metaPixelId) providers.push("- **Meta**, for the Meta Pixel, if you accept analytics cookies.");

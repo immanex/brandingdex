@@ -40,7 +40,7 @@ export const linkTag = link =>
   `<a href="${esc(link.href)}"${link.external ? ' target="_blank" rel="noopener"' : ""}${link.track ? ` data-track="${link.track}"` : ""}>${esc(link.label)}${link.external ? " ↗" : ""}</a>`;
 
 export function subscribeForm(ctx, source) {
-  return `<form class="subscribe" data-form="subscribe" action="/api/subscribe" method="post">
+  return `<form class="subscribe" data-form="subscribe" name="newsletter" action="/newsletter/confirmed/" method="post" data-netlify="true" netlify-honeypot="company_url">
   <div class="subscribe-row">
     <label class="visually-hidden" for="subscribe-${source}">Email address</label>
     <input id="subscribe-${source}" name="email" type="email" required autocomplete="email" placeholder="you@company.com">

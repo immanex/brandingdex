@@ -36,7 +36,8 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
     ? `<div class="cf-turnstile" data-sitekey="${esc(site.forms.turnstileSiteKey)}" data-theme="dark"></div>`
     : "";
 
-  return `<form class="brief-form" data-form="contact" action="/api/contact" method="post">
+  // Netlify Forms picks these up at deploy time. The two variants have different fields, so each gets its own name.
+  return `<form class="brief-form" data-form="contact" name="${compact ? "quick-brief" : "project-brief"}" action="/thanks/" method="post" data-netlify="true" netlify-honeypot="company_url">
   <div class="package-choice" hidden></div>
   ${compact ? "" : '<div class="field-row">'}
     <label>Your name<input name="name" required autocomplete="name" maxlength="100" placeholder="How should we call you?"></label>

@@ -47,7 +47,6 @@ function thanks(ctx) {
   <div class="eyebrow">THANK YOU</div>
   <h1>Your brief is<br><em>with us.</em></h1>
   <p class="pricing-lead">Thank you for getting in touch. We’ll read it properly and reply ${esc(site.contact.responseTime)}.</p>
-  <p class="small">You should receive a confirmation email shortly. If it doesn’t arrive, check your spam folder.</p>
 </header>
 <section class="process">
   <div><div class="eyebrow">WHAT HAPPENS NEXT</div><h2>Three simple steps.</h2></div>

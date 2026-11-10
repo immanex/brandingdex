@@ -12,7 +12,8 @@ export default {
 
   // Your live web address, without a trailing slash.
   // Used for Google, link previews, the sitemap and confirmation emails.
-  url: "https://brandingdex.com",
+  // On Netlify this follows the site's main address (the custom domain once one is connected).
+  url: process.env.URL || "https://brandingdex.com",
 
   tagline: "Built to mean more. Designed to stand out.",
   description: "Brandingdex is a branding and design agency creating distinctive brand identities, clear strategy, and professional websites.",
