@@ -12,13 +12,14 @@ function privacy(site) {
     ? `email [${site.contact.email}](mailto:${site.contact.email})`
     : "write to us through our [contact page](/contact/)";
   const tracking = site.analytics.ga4Id || site.analytics.metaPixelId;
+  const place = [site.location.city, site.location.region, site.location.country].filter(Boolean).join(", ");
   const analytics = [];
   if (site.analytics.ga4Id) analytics.push("- **Google Analytics** (Google) helps us understand how visitors find and use the website. It sets cookies and is only loaded if you accept analytics cookies.");
   if (site.analytics.metaPixelId) analytics.push("- **Meta Pixel** (Meta) helps us measure and improve our advertising on Facebook and Instagram. It sets cookies and is only loaded if you accept analytics cookies.");
   if (site.analytics.cloudflareToken) analytics.push("- **Cloudflare Web Analytics** counts page views without cookies and without identifying individual visitors.");
   if (!analytics.length) analytics.push("We do not currently use analytics or advertising cookies on this website.");
   const providers = [
-    "- **Netlify**, which hosts the website, receives the forms you send us, and processes technical data such as your IP address to keep it secure."
+    "- **Netlify** (Netlify, Inc., United States), which hosts the website, receives and stores the forms you send us, and processes technical data such as your IP address to keep the website secure and filter spam."
   ];
   if (site.analytics.ga4Id) providers.push("- **Google**, for Google Analytics, if you accept analytics cookies.");
   if (site.analytics.metaPixelId) providers.push("- **Meta**, for the Meta Pixel, if you accept analytics cookies.");
@@ -27,13 +28,15 @@ function privacy(site) {
   return `
 This policy explains what personal information ${entity} ("we", "us") collects through this website, why we collect it, and the choices you have.
 
+## Who we are
+
+${entity} is a branding and design studio${place ? ` based in ${place}` : ""}. We are responsible for the personal information collected through this website. To contact us about it, ${reach}.
+
 ## What we collect and why
 
 ### When you send a project brief
 
-We collect the details you give us: your name, email address, business name, the service or package you are interested in, your budget range and timeline if you share them, and what you tell us about your project.
-
-We also record which page you sent the form from and how you reached the website, such as the referring website or a campaign link. This helps us understand which of our marketing is useful.
+We collect the details you give us: your name, email address, business name, the service or package you are interested in, your budget range and timeline if you share them, and what you tell us about your project. Our form provider also records technical details with each submission, such as your IP address, to help filter spam.
 
 We use this information to reply to you, prepare a proposal, and keep a record of our conversation. We process it because you asked us to get in touch, and because we have a legitimate interest in responding to enquiries.
 
@@ -50,10 +53,7 @@ Your answers are scored in your browser. They are not sent to us unless you choo
 ${analytics.join("\n")}
 
 ${site.forms.turnstileSiteKey ? "Our forms use Cloudflare Turnstile to tell real visitors from automated spam. It checks technical signals from your browser and does not use advertising cookies.\n" : ""}
-### Information stored on your device
-
-To remember how you reached the website, we keep a short note in your browser's session storage (the page you arrived on, the referring website, and any campaign tags). It is cleared when you close the tab, and it is only sent to us if you submit a form.${tracking ? " We also store your cookie choice so we do not ask you again on every page." : ""}
-
+${tracking ? "### Information stored on your device\n\nWe store your cookie choice in your browser so we do not ask you again on every page.\n" : ""}
 ## Who we share it with
 
 We do not sell your personal information. We share it only with service providers who help us run the website and reply to you:

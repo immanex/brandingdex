@@ -19,14 +19,14 @@ export default {
   description: "Brandingdex is a branding and design agency creating distinctive brand identities, clear strategy, and professional websites.",
 
   location: {
-    city: "",
-    region: "",
-    country: "",
-    countryCode: ""
+    city: "Uyo",
+    region: "Akwa Ibom State",
+    country: "Nigeria",
+    countryCode: "NG"
   },
 
   contact: {
-    email: "",                 // public address shown on the site, e.g. "hello@brandingdex.com"
+    email: "hello@brandingdex.com",   // public address shown on the site
     phone: "",                 // optional, international format, e.g. "+234 800 000 0000"
     whatsapp: "",              // WhatsApp number in international format, e.g. "+2348000000000"
     whatsappMessage: "Hello Brandingdex, I’d like to talk about a project.",
