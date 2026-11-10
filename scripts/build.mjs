@@ -6,6 +6,7 @@ import { page as renderPage } from "../src/lib/layout.mjs";
 import { markdown, readingMinutes } from "../src/lib/markdown.mjs";
 import { contentPage } from "../src/lib/content-pages.mjs";
 import { rss } from "../src/lib/feed.mjs";
+import { robots, sitemap } from "../src/lib/sitemap.mjs";
 import home from "../src/pages/home.mjs";
 import portfolio from "../src/pages/portfolio.mjs";
 import pricing from "../src/pages/pricing.mjs";
@@ -164,6 +165,8 @@ async function main() {
     await writePage(ctx, pageOptions);
   }
   await writeFile(path.join(output, "feed.xml"), rss(ctx), "utf8");
+  await writeFile(path.join(output, "sitemap.xml"), sitemap(site, options), "utf8");
+  await writeFile(path.join(output, "robots.txt"), robots(site), "utf8");
 
   console.log(`Built ${options.length} pages into dist/`);
 }
