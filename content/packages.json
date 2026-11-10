@@ -1,0 +1,212 @@
+{
+  "currency": "USD",
+  "categories": [
+    { "id": "brand", "label": "Brand identity" },
+    { "id": "web", "label": "Website design & build" },
+    { "id": "more", "label": "Brand + website & ongoing" }
+  ],
+  "packages": [
+    {
+      "slug": "brand-essentials",
+      "name": "Brand Essentials",
+      "category": "brand",
+      "service": "Brand identity",
+      "featured": false,
+      "description": "For solo founders and new businesses that need a clear, professional start.",
+      "price": 350,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "1–2 weeks",
+      "features": [
+        "Discovery questionnaire",
+        "1 logo direction, refined together",
+        "Primary logo + alternate mark",
+        "Colour palette + typography",
+        "Mini brand guide + final logo files",
+        "1 double-sided business card layout",
+        "2 consolidated revision rounds"
+      ]
+    },
+    {
+      "slug": "brand-identity",
+      "name": "Brand Identity",
+      "category": "brand",
+      "service": "Brand identity",
+      "featured": true,
+      "description": "For growing businesses ready for a consistent identity across every touchpoint.",
+      "price": 750,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "2–3 weeks",
+      "features": [
+        "Discovery & brand direction session",
+        "2 initial identity directions; 1 developed",
+        "Primary, secondary & icon logo suite",
+        "Colour, type & graphic elements",
+        "Brand guidelines + 3 social templates",
+        "Business card + letterhead designs",
+        "1 editable invoice template",
+        "2 consolidated revision rounds"
+      ]
+    },
+    {
+      "slug": "brand-signature",
+      "name": "Brand Signature",
+      "category": "brand",
+      "service": "Brand identity",
+      "featured": false,
+      "description": "For businesses launching a new chapter or investing in a deeper brand foundation.",
+      "price": 1500,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "4–6 weeks",
+      "features": [
+        "Positioning & messaging workshop",
+        "Audience & competitor review",
+        "Complete visual identity system",
+        "Expanded brand guidelines",
+        "6 social templates + email signature design",
+        "Business card, letterhead + envelope designs",
+        "1 editable invoice template",
+        "1 simple 3–5 second logo animation",
+        "3 consolidated revision rounds"
+      ]
+    },
+    {
+      "slug": "website-launch",
+      "name": "Website Launch",
+      "category": "web",
+      "service": "Website & digital experience",
+      "featured": false,
+      "description": "For a personal brand, campaign, or business that needs one focused destination.",
+      "price": 500,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "1–2 weeks",
+      "features": [
+        "1 custom landing page, up to 7 sections",
+        "Responsive design + website build",
+        "Contact form setup",
+        "Page titles, descriptions & indexing setup",
+        "Basic analytics setup when supplied",
+        "2 revision rounds + 7 days bug fixes"
+      ]
+    },
+    {
+      "slug": "business-website",
+      "name": "Business Website",
+      "category": "web",
+      "service": "Website & digital experience",
+      "featured": true,
+      "description": "For service businesses that need a polished website with room to tell their story.",
+      "price": 1200,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "3–4 weeks",
+      "features": [
+        "Up to 5 designed & built pages",
+        "Responsive UX/UI tailored to your brand",
+        "Contact form + social links",
+        "Editable content setup & handover",
+        "On-page SEO foundations",
+        "2 revision rounds + 14 days bug fixes"
+      ]
+    },
+    {
+      "slug": "website-growth",
+      "name": "Website Growth",
+      "category": "web",
+      "service": "Website & digital experience",
+      "featured": false,
+      "description": "For established businesses with richer content and a more considered visitor journey.",
+      "price": 2500,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "4–6 weeks",
+      "features": [
+        "Up to 10 designed & built pages",
+        "Discovery & visitor journey planning",
+        "CMS collection for work, articles, or services",
+        "1 standard booking or email-tool integration",
+        "SEO foundations + analytics setup",
+        "3 revision rounds + 30 days bug fixes"
+      ]
+    },
+    {
+      "slug": "brand-website",
+      "name": "Brand + Website",
+      "category": "more",
+      "service": "A little of everything",
+      "featured": true,
+      "description": "One cohesive identity and website, designed together from the start.",
+      "price": 1750,
+      "per": "",
+      "timelineLabel": "ESTIMATED DELIVERY",
+      "timeline": "4–6 weeks",
+      "features": [
+        "Everything in Brand Identity",
+        "Everything in Business Website",
+        "Shared creative direction across both",
+        "One coordinated delivery process",
+        "2 revision rounds per workstream",
+        "Business card, letterhead + invoice template included",
+        "Logo assets + website handover"
+      ]
+    },
+    {
+      "slug": "creative-partner",
+      "name": "Creative Partner",
+      "category": "more",
+      "service": "Ongoing creative partnership",
+      "featured": false,
+      "description": "Ongoing design support for teams that want their brand to keep moving.",
+      "price": 650,
+      "per": "month",
+      "timelineLabel": "CAPACITY",
+      "timeline": "Monthly partnership",
+      "features": [
+        "12 design hours per month",
+        "Social assets, presentations & web updates",
+        "1 active request at a time",
+        "Weekly priorities agreed together",
+        "Revisions count toward monthly hours",
+        "Monthly renewal; unused hours do not roll over"
+      ]
+    }
+  ],
+  "note": "Brand + Website starts at $1,750, compared with $1,950 for Brand Identity and Business Website separately—a $200 bundle saving at the listed starting prices.",
+  "faq": [
+    {
+      "q": "What does “from” mean?",
+      "a": "These starting prices cover the listed scope. Additional pages, deliverables, complex features, or extra revisions are quoted separately and agreed before work."
+    },
+    {
+      "q": "How do payments work?",
+      "a": "Proposed project terms: 50% to book and 50% before final handover. Larger scopes can use agreed milestones. Monthly creative support is paid at the start of each month. Your proposal sets the final terms."
+    },
+    {
+      "q": "What is separate from website pricing?",
+      "a": "Domain registration, hosting, paid plugins, platform subscriptions, stock assets, copywriting, and ongoing maintenance are separate unless your proposal includes them. E-commerce and custom apps require a tailored quote."
+    },
+    {
+      "q": "What do I need to provide?",
+      "a": "Your goals, feedback, and approved website text and imagery. Website-only packages assume you already have a usable brand identity. Content support can be added to your quote."
+    },
+    {
+      "q": "Can you work with my budget?",
+      "a": "Yes—share your priorities and budget range. We can discuss a smaller first phase or a tailored scope. Delivery estimates start after the deposit, content, and required access are received."
+    },
+    {
+      "q": "Are stationery and logo animation included?",
+      "a": "Brand Essentials includes one double-sided business card layout. Brand Identity adds one letterhead and one editable invoice template. Brand Signature includes those items, one envelope layout, an email signature design, and one simple 3–5 second logo animation in MP4 format, with one motion revision. The animation uses your approved logo; character animation, 3D, voiceover, and custom sound design are quoted separately."
+    },
+    {
+      "q": "What about ID cards, printing, and extra formats?",
+      "a": "Staff ID card templates, additional stationery, and extra animation formats can be added by quotation. Stationery includes one agreed size and layout per item, print-ready PDF files, and editable source files where applicable. Invoice templates are supplied in one agreed editable format; they do not include accounting software setup. Printing, physical production, staff-by-staff personalisation, and paid font licences are separate. Final deliverables and usage rights are confirmed in your proposal."
+    },
+    {
+      "q": "Do you offer design-only projects?",
+      "a": "Yes. If you already have a developer, ask for a UX/UI-only scope. The listed website packages include design and build; standalone design is quoted around your requirements."
+    }
+  ]
+}

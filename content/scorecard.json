@@ -1,0 +1,63 @@
+{
+  "answers": [
+    { "label": "Yes", "value": 2 },
+    { "label": "Partly", "value": 1 },
+    { "label": "Not yet", "value": 0 }
+  ],
+  "areas": [
+    {
+      "id": "clarity",
+      "name": "Clarity",
+      "questions": [
+        "Can you describe what your business does, and for whom, in one clear sentence?",
+        "Do you know what makes you a different choice from your closest competitors?",
+        "Does your team describe the business the same way you do?"
+      ],
+      "advice": "Start with direction. A clear positioning and messaging foundation makes every later design decision easier.",
+      "linkLabel": "Explore brand strategy",
+      "link": "/services/brand-strategy/"
+    },
+    {
+      "id": "identity",
+      "name": "Identity",
+      "questions": [
+        "Does your logo work at every size, from a profile picture to a signboard?",
+        "Do you have defined brand colours and fonts that you use every time?",
+        "Do you have brand guidelines someone new could follow without asking you?"
+      ],
+      "advice": "Build the system. A logo suite, colour, typography, and guidelines turn a single mark into a recognisable brand.",
+      "linkLabel": "Explore brand identity design",
+      "link": "/services/brand-identity/"
+    },
+    {
+      "id": "presence",
+      "name": "Website",
+      "questions": [
+        "Does your website explain what you offer within the first few seconds?",
+        "Does your website look and work well on a phone?",
+        "Is there one obvious next step for a visitor—enquire, book, or buy?"
+      ],
+      "advice": "Sharpen your website. A clear message, a responsive design, and one obvious next step turn visitors into enquiries.",
+      "linkLabel": "Explore website design",
+      "link": "/services/website-design/"
+    },
+    {
+      "id": "consistency",
+      "name": "Consistency",
+      "questions": [
+        "Do your social media, documents, and website look like they come from the same business?",
+        "Do your invoices, proposals, and business cards carry your brand?",
+        "Can you produce new marketing materials quickly, without reinventing the look each time?"
+      ],
+      "advice": "Hold it together. Templates, stationery, and steady design support keep everything looking like one business.",
+      "linkLabel": "Explore ongoing design support",
+      "link": "/services/creative-partner/"
+    }
+  ],
+  "bands": [
+    { "min": 85, "title": "Well built.", "text": "Your brand has strong foundations. The work now is keeping it consistent as the business grows." },
+    { "min": 60, "title": "Taking shape.", "text": "The essentials are in place, with a few gaps worth closing before they slow you down." },
+    { "min": 35, "title": "Room to grow.", "text": "Parts of your brand are working, but people are probably getting a mixed picture of the business." },
+    { "min": 0, "title": "A fresh start.", "text": "You are early—which is the easiest time to get the foundations right." }
+  ]
+}

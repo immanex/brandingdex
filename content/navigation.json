@@ -1,0 +1,20 @@
+{
+  "header": [
+    { "label": "Home", "href": "/", "key": "home" },
+    { "label": "Portfolio", "href": "/portfolio/" },
+    { "label": "Services", "href": "/services/" },
+    { "label": "Packages", "href": "/pricing/", "className": "nav-package" },
+    { "label": "Insights", "href": "/insights/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Contact", "href": "/contact/", "key": "contact" }
+  ],
+  "footer": [
+    { "label": "Portfolio", "href": "/portfolio/" },
+    { "label": "Services", "href": "/services/" },
+    { "label": "Packages", "href": "/pricing/" },
+    { "label": "Insights", "href": "/insights/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Contact", "href": "/contact/" },
+    { "label": "Brand Scorecard", "href": "/brand-scorecard/" }
+  ]
+}

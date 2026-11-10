@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "orbit-brand-identity",
+    "name": "Orbit",
+    "type": "Brand identity",
+    "cat": "identity",
+    "bg": "#282d4e",
+    "fg": "#c4d8ff",
+    "tag": "A bold identity for forward thinkers.",
+    "headline": "A new perspective. A distinctive identity.",
+    "challenge": "Explore how a technology brand can communicate momentum and confidence without relying on familiar tech clichés.",
+    "approach": "Build the identity around an orbital motif and a precise, expressive wordmark. Pair deep indigo with luminous blue to balance credibility and energy.",
+    "scope": "Brand positioning · Logo system · Visual identity · Brand guidelines",
+    "deliver": "A flexible visual language for presentations, digital communication, and brand launches.",
+    "concept": true,
+    "gallery": [
+      {"kind": "identity", "asset": "brand-mark", "label": "01 / Brand mark", "headline": "A mark with momentum.", "body": "A clear wordmark and orbital symbol create a flexible signature for the brand."},
+      {"kind": "identity", "asset": "typography", "label": "02 / Colour & typography", "headline": "Confident in every setting.", "body": "Deep indigo, electric blue, and a direct type system balance trust with forward energy."},
+      {"kind": "stationery", "asset": "business-card", "label": "03 / Business card", "headline": "The identity, up close.", "body": "A simple, tactile application of the visual system for first meetings and introductions."}
+    ]
+  },
+  {
+    "slug": "forma-website-design",
+    "name": "Forma",
+    "type": "Website design",
+    "cat": "website",
+    "bg": "#c9c7b6",
+    "fg": "#353b30",
+    "tag": "Spaces for the way you live.",
+    "headline": "An architectural vision, translated online.",
+    "challenge": "Create a clear digital journey for a conceptual architecture studio, helping visitors explore projects and understand its design philosophy.",
+    "approach": "Use an editorial project grid, generous whitespace, and a simple enquiry journey. Let work lead the experience across desktop and mobile.",
+    "scope": "Website strategy · UX/UI design · Responsive layouts",
+    "deliver": "A website design concept covering the homepage, project archive, project details, and enquiry flow.",
+    "concept": true,
+    "gallery": [
+      {"kind": "website", "label": "01 / Homepage", "headline": "Spaces for the way you live.", "body": "A calm introduction gives the studio's point of view room to breathe.", "button": "Explore our work"},
+      {"kind": "website", "label": "02 / Projects", "headline": "Considered spaces. Real life.", "body": "A visual project archive helps visitors find the work that speaks to them.", "button": "View selected projects"},
+      {"kind": "website", "label": "03 / Project detail", "headline": "Every space has a story.", "body": "Project details pair strong imagery with clear context and a direct path to enquire.", "button": "Discuss a project"}
+    ]
+  },
+  {
+    "slug": "morrow-brand-identity",
+    "name": "Morrow",
+    "type": "Brand identity",
+    "cat": "identity",
+    "bg": "#edd9a4",
+    "fg": "#963f29",
+    "tag": "A brighter everyday.",
+    "headline": "Everyday rituals. An unmistakable personality.",
+    "challenge": "Develop a warm, recognisable identity for a conceptual lifestyle brand that should feel thoughtful and approachable.",
+    "approach": "Combine a characterful editorial wordmark with sun-warmed colour and simple, expressive compositions. Establish a consistent system rather than a standalone logo.",
+    "scope": "Brand strategy · Visual identity · Art direction · Brand guidelines",
+    "deliver": "An identity direction with adaptable typography, colour, and visual applications.",
+    "concept": true,
+    "gallery": [
+      {"kind": "identity", "asset": "brand-mark", "label": "01 / Brand mark", "headline": "A brighter everyday.", "body": "A soft, expressive wordmark gives Morrow a familiar, optimistic feel."},
+      {"kind": "identity", "asset": "typography", "label": "02 / Colour & typography", "headline": "Warmth with a point of view.", "body": "Sunlit tones and editorial lettering create an ownable world for everyday rituals."},
+      {"kind": "stationery", "asset": "letterhead", "label": "03 / Brand application", "headline": "Small details, held together.", "body": "A branded letterhead carries the identity into practical business communication."}
+    ]
+  },
+  {
+    "slug": "vale-website-design",
+    "name": "Vale",
+    "type": "Website design",
+    "cat": "website",
+    "bg": "#b8d4d0",
+    "fg": "#164c46",
+    "tag": "Care that starts with you.",
+    "headline": "A calmer path from discovery to enquiry.",
+    "challenge": "Design an approachable website experience for a conceptual wellness business, making services and next steps easy to understand.",
+    "approach": "Organise services around visitor needs, use reassuring visual hierarchy, and create a direct route to an appointment enquiry.",
+    "scope": "Information architecture · UX/UI design · Mobile website design",
+    "deliver": "A responsive website concept with service discovery, service detail layouts, and a clear contact journey.",
+    "concept": true,
+    "gallery": [
+      {"kind": "website", "label": "01 / Homepage", "headline": "Care that starts with you.", "body": "A reassuring landing page sets the tone and makes the first step feel simple.", "button": "Find your care"},
+      {"kind": "website", "label": "02 / Services", "headline": "Find the support you need.", "body": "Clear service summaries help visitors compare options without feeling overwhelmed.", "button": "Explore services"},
+      {"kind": "website", "label": "03 / Appointment", "headline": "Your next step, made clear.", "body": "A focused enquiry screen explains what happens next and invites a conversation.", "button": "Request an appointment"}
+    ]
+  },
+  {
+    "slug": "rooted-brand-identity",
+    "name": "Rooted",
+    "type": "Brand identity",
+    "cat": "identity",
+    "bg": "#d7dfba",
+    "fg": "#36513a",
+    "tag": "Rooted in something good.",
+    "headline": "Natural character. A coherent brand system.",
+    "challenge": "Express a conceptual wellbeing brand through a distinctive identity that feels grounded without becoming visually generic.",
+    "approach": "Create an organic symbol system, confident typography, and a restrained green palette. Keep each element useful across brand touchpoints.",
+    "scope": "Brand direction · Logo design · Visual identity · Brand applications",
+    "deliver": "A cohesive brand identity concept spanning marks, colour, typography, and digital brand assets.",
+    "concept": true,
+    "gallery": [
+      {"kind": "identity", "asset": "brand-mark", "label": "01 / Brand mark", "headline": "Rooted in something good.", "body": "A simple botanical mark gives the wellbeing brand a distinct and grounded signature."},
+      {"kind": "identity", "asset": "typography", "label": "02 / Colour & typography", "headline": "Natural, never ordinary.", "body": "A fresh green palette and confident type system make the identity feel clear and contemporary."},
+      {"kind": "stationery", "asset": "id-card", "label": "03 / Team ID card", "headline": "A brand people can wear.", "body": "An adaptable staff ID card shows how the identity can extend to the people behind the business."}
+    ]
+  },
+  {
+    "slug": "luma-brand-and-website",
+    "name": "Luma",
+    "type": "Brand & website",
+    "cat": "combined",
+    "bg": "#f2ae8e",
+    "fg": "#622b43",
+    "tag": "Make your next move meaningful.",
+    "headline": "One clear story. Across brand and website.",
+    "challenge": "Connect the identity and digital presence of a conceptual consultancy so visitors encounter one coherent story.",
+    "approach": "Develop a clear brand voice and expressive identity, then carry both into a website built around expertise, services, and an enquiry journey.",
+    "scope": "Brand strategy · Visual identity · Website UX/UI · Responsive design",
+    "deliver": "An integrated brand and website concept showing how strategy can connect every visitor touchpoint.",
+    "concept": true,
+    "gallery": [
+      {"kind": "identity", "asset": "brand-mark", "label": "01 / Brand direction", "headline": "Make your next move meaningful.", "body": "A confident wordmark and warm palette give the consultancy a memorable foundation."},
+      {"kind": "website", "label": "02 / Homepage", "headline": "Make your next move meaningful.", "body": "The website opens with a focused message and a clear introduction to the consultancy.", "button": "Start a conversation"},
+      {"kind": "website", "label": "03 / Services", "headline": "Strategy for what comes next.", "body": "An easy-to-scan service page connects the brand promise to practical ways to work together.", "button": "Explore our approach"},
+      {"kind": "stationery", "asset": "invoice", "label": "04 / Business stationery", "headline": "One brand, across every touchpoint.", "body": "A clear invoice layout shows how the identity carries through everyday client communication."}
+    ]
+  },
+  {
+    "slug": "cedar-house-stationery",
+    "name": "Cedar House",
+    "type": "Stationery design",
+    "cat": "stationery",
+    "bg": "#d4c7ad",
+    "fg": "#3b4539",
+    "tag": "A thoughtful identity, made useful.",
+    "headline": "Everyday stationery with a sense of place.",
+    "challenge": "Create a cohesive stationery family for a conceptual hospitality brand, including guest-facing materials and team identification.",
+    "approach": "Use a restrained forest palette, sturdy typography, and clear information hierarchy so each piece feels related and useful.",
+    "scope": "Business card · Letterhead · Invoice · ID card · Envelope",
+    "deliver": "A stationery design concept showing the identity across print-ready and staff-facing applications.",
+    "concept": true,
+    "gallery": [
+      {"kind": "stationery", "asset": "business-card", "label": "01 / Business card", "headline": "A warm welcome, in hand.", "body": "A two-sided business card pairs concise contact details with a distinctive brand signature."},
+      {"kind": "stationery", "asset": "letterhead", "label": "02 / Letterhead", "headline": "Room for the message.", "body": "A clean letterhead keeps the brand present while leaving space for day-to-day correspondence."},
+      {"kind": "stationery", "asset": "invoice", "label": "03 / Invoice", "headline": "Clear, useful, on brand.", "body": "A well-ordered invoice concept makes essential information easy to scan."},
+      {"kind": "stationery", "asset": "id-card", "label": "04 / Staff ID card", "headline": "A welcome for every team member.", "body": "A staff ID layout combines a clear name, role, and portrait area with the brand identity."},
+      {"kind": "stationery", "asset": "envelope", "label": "05 / Envelope", "headline": "The first detail they notice.", "body": "A simple envelope design extends the visual system to a familiar delivery touchpoint."}
+    ]
+  }
+]

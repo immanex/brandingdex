@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "quote": "They took everything we were trying to say and gave it a clear, confident identity. The whole process felt thoughtful, collaborative, and easier than we expected.",
+      "name": "Sample client",
+      "role": "Illustrative placeholder",
+      "service": "Brand identity",
+      "portrait": "/assets/testimonial-portrait.jpg",
+      "portraitAlt": "Fictional illustrative profile portrait for sample testimonial content"
+    },
+    {
+      "quote": "From the first conversation to launch, the team brought clarity at every step. Our website now explains what we do and makes the next step feel simple.",
+      "name": "Sample client",
+      "role": "Illustrative placeholder",
+      "service": "Website design",
+      "portrait": "/assets/testimonial-portrait.jpg",
+      "portraitAlt": "Fictional illustrative profile portrait for sample testimonial content"
+    },
+    {
+      "quote": "Our brand finally feels consistent wherever people meet it. The strategy gave us focus, and the design gave us the confidence to show up properly.",
+      "name": "Sample client",
+      "role": "Illustrative placeholder",
+      "service": "Brand and website",
+      "portrait": "/assets/testimonial-portrait.jpg",
+      "portraitAlt": "Fictional illustrative profile portrait for sample testimonial content"
+    }
+  ]
+}

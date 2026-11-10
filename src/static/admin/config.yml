@@ -1,0 +1,118 @@
+backend:
+  name: github
+  repo: immanex/brandingdex
+  branch: main
+
+media_folder: /src/static/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: pages
+    label: Pages
+    label_singular: Page
+    folder: /content/pages
+    create: true
+    extension: json
+    format: json
+    slug:
+      editable: true
+      pattern:
+        - '^(?!(?:admin|assets|api|portfolio|services|pricing|insights|about|contact|thanks|newsletter|privacy|terms|brand-scorecard)$)[a-z0-9]+(?:-[a-z0-9]+)*$'
+        - Use a lowercase hyphenated URL that does not replace a built-in site route.
+    preview_path: '{{slug}}/'
+    fields:
+      - { label: Page title, name: title, widget: string }
+      - { label: Short description, name: description, widget: text }
+      - { label: Hide from search engines, name: noindex, widget: boolean, required: false, default: false }
+      - label: Page sections
+        name: sections
+        widget: list
+        label_singular: Section
+        types:
+          - name: text
+            label: Text section
+            fields:
+              - { label: Heading, name: heading, widget: string, required: false }
+              - { label: Text, name: body, widget: markdown }
+          - name: image
+            label: Image
+            fields:
+              - { label: Image, name: src, widget: image }
+              - { label: Alternative text, name: alt, widget: string }
+              - { label: Caption, name: caption, widget: string, required: false }
+          - name: embed
+            label: External form or booking embed
+            description: Embed Calendly, Typeform, Tally, YouTube or Vimeo using its HTTPS URL.
+            fields:
+              - label: Service
+                name: provider
+                widget: select
+                options: [calendly, typeform, tally, youtube, vimeo]
+              - { label: Embed URL, name: url, widget: string, hint: Use the HTTPS share or embed URL from the selected service. }
+              - { label: Accessible title, name: title, widget: string, hint: Describe what the embedded form or video is for. }
+          - name: button
+            label: Button link
+            fields:
+              - { label: Button text, name: label, widget: string }
+              - { label: Link address, name: href, widget: string, hint: Use a page path such as /contact/ or a full HTTPS URL. }
+
+  - name: insights
+    label: Insights
+    label_singular: Article
+    folder: /content/insights
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Cover image, name: cover, widget: image, required: false }
+      - { label: Cover image alternative text, name: coverAlt, widget: string, required: false }
+      - { label: Date, name: date, widget: datetime, type: date }
+      - { label: Topic, name: tag, widget: string }
+      - { label: Article, name: body, widget: markdown }
+
+  - name: website
+    label: Website menus
+    files:
+      - name: menus
+        label: Header and footer menus
+        file: /content/navigation.json
+        format: json
+        fields:
+          - label: Header links
+            name: header
+            widget: list
+            label_singular: Header link
+            fields:
+              - { label: Link text, name: label, widget: string }
+              - { label: Address, name: href, widget: string, hint: Use a page path such as /about/ or a full HTTPS URL. }
+          - label: Footer links
+            name: footer
+            widget: list
+            label_singular: Footer link
+            fields:
+              - { label: Link text, name: label, widget: string }
+              - { label: Address, name: href, widget: string, hint: Use a page path such as /about/ or a full HTTPS URL. }
+
+  - name: testimonials
+    label: Testimonials
+    files:
+      - name: homepage
+        label: Homepage testimonial slides
+        file: /content/testimonials.json
+        format: json
+        fields:
+          - label: Testimonial slides
+            name: items
+            widget: list
+            label_singular: Testimonial
+            summary: '{{fields.name}} — {{fields.service}}'
+            fields:
+              - { label: Quote, name: quote, widget: text }
+              - { label: Client name, name: name, widget: string }
+              - { label: Client role, name: role, widget: string }
+              - { label: Service, name: service, widget: string }
+              - { label: Profile image, name: portrait, widget: image, required: false }
+              - { label: Image description, name: portraitAlt, widget: string, required: false }

@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "brand-strategy",
+    "name": "Brand strategy",
+    "homeTitle": "Find your direction.",
+    "summary": "Brand positioning, audience clarity, messaging, and a strategic foundation for your next chapter.",
+    "metaTitle": "Brand strategy & positioning",
+    "metaDescription": "Brand strategy from Brandingdex: positioning, audience clarity, and messaging that give your identity and website a clear reason behind every decision.",
+    "eyebrow": "SERVICES / BRAND STRATEGY",
+    "headline": "Find your\n*direction.*",
+    "lead": "Before the logo, the website, or the campaign, there is a simpler question: what should people understand about you? Brand strategy answers it—and gives every design decision a clear reason behind it.",
+    "forTitle": "For businesses at a turning point.",
+    "for": [
+      { "title": "You are preparing to launch.", "text": "You have the idea and the offer. You need a clear way to explain it before investing in design." },
+      { "title": "You have outgrown your first positioning.", "text": "The business has changed, but the way you describe it has not caught up." },
+      { "title": "Your message changes from place to place.", "text": "Your website, social profiles, and pitch each tell a slightly different story." }
+    ],
+    "includedTitle": "A foundation you can build on.",
+    "included": [
+      { "title": "Discovery", "text": "A structured conversation about your business, your audience, and your ambitions." },
+      { "title": "Audience clarity", "text": "Who you serve, what they need, and what they need to hear from you." },
+      { "title": "Competitor review", "text": "How others in your space present themselves—and where you can stand apart." },
+      { "title": "Positioning", "text": "A clear statement of what you offer, for whom, and why it matters." },
+      { "title": "Messaging", "text": "Key messages and a tone of voice your team can actually use." },
+      { "title": "Strategic foundation", "text": "A concise summary that guides your identity, website, and content decisions." }
+    ],
+    "packages": ["brand-signature"],
+    "packagesNote": "Strategy is built into Brand Signature, alongside a complete visual identity. Need positioning and messaging on their own? Ask for a tailored scope.",
+    "pricingCategory": "brand",
+    "portfolioCategory": "identity",
+    "faq": [
+      { "q": "Do I need strategy before a logo?", "a": "Not always. Brand Essentials and Brand Identity begin with a discovery step that gives the design a clear direction. A fuller strategy phase helps most when you are launching something new, repositioning, or finding that your message changes from place to place." },
+      { "q": "Can I get strategy on its own?", "a": "Yes. Positioning and messaging can be scoped as a standalone project and quoted around your requirements. Tell us what you need in your project brief." },
+      { "q": "How long does it take?", "a": "It depends on the scope. As part of Brand Signature, strategy and the complete identity are estimated at 4–6 weeks together. Your proposal confirms the timeline before work begins." }
+    ]
+  },
+  {
+    "slug": "brand-identity",
+    "name": "Brand identity design",
+    "homeTitle": "Brand identity design.",
+    "summary": "Logo systems, brand guidelines, business stationery, and visual assets that feel unmistakably yours across every touchpoint.",
+    "metaTitle": "Brand identity & logo design",
+    "metaDescription": "Brand identity design from Brandingdex: logo systems, colour, typography, brand guidelines, and business stationery. Clear packages from $350.",
+    "eyebrow": "SERVICES / BRAND IDENTITY",
+    "headline": "An identity that is\nunmistakably *yours.*",
+    "lead": "A logo is one piece. A brand identity is the whole system—marks, colour, typography, and the everyday materials that make your business recognisable wherever it shows up.",
+    "forTitle": "For every stage of the business.",
+    "for": [
+      { "title": "You are starting out.", "text": "You need a clear, professional identity from day one—without overbuilding." },
+      { "title": "You are growing.", "text": "You are ready for a consistent identity across your website, social media, and documents." },
+      { "title": "You are entering a new chapter.", "text": "A new offer, a new audience, or a new name deserves a deeper brand foundation." }
+    ],
+    "includedTitle": "A complete system, not a single file.",
+    "included": [
+      { "title": "Logo system", "text": "A primary logo with alternate, secondary, and icon marks, so your brand works at every size." },
+      { "title": "Colour & typography", "text": "A defined palette and type system that make every piece feel related." },
+      { "title": "Brand guidelines", "text": "Clear rules and examples, so anyone on your team can apply the identity correctly." },
+      { "title": "Business stationery", "text": "Business cards, letterheads, invoice templates, and envelopes in selected packages." },
+      { "title": "Social templates", "text": "Editable layouts that keep your posts consistent without starting from scratch." },
+      { "title": "Logo animation", "text": "A simple 3–5 second logo animation, included in Brand Signature." }
+    ],
+    "packages": ["brand-essentials", "brand-identity", "brand-signature"],
+    "packagesNote": "",
+    "pricingCategory": "brand",
+    "portfolioCategory": "identity",
+    "faq": [
+      { "q": "How many logo directions will I see?", "a": "Brand Essentials develops one logo direction, refined together with you. Brand Identity begins with two initial identity directions, and one is developed into the final system." },
+      { "q": "How many revisions are included?", "a": "Brand Essentials and Brand Identity include two consolidated revision rounds. Brand Signature includes three. Additional rounds are quoted separately and agreed before work." },
+      { "q": "Do you print the stationery?", "a": "We design it and supply print-ready PDF files, with editable source files where applicable. Printing and physical production are separate." },
+      { "q": "Can you refresh an existing brand?", "a": "Yes. Share what you have and what is no longer working. We will recommend whether a refresh or a new identity makes more sense, and scope it in your proposal." }
+    ]
+  },
+  {
+    "slug": "website-design",
+    "name": "Website design",
+    "homeTitle": "Professional website design.",
+    "summary": "Business websites, portfolio sites, landing pages, and responsive UX/UI—designed to turn your brand into a clear, professional online experience.",
+    "metaTitle": "Professional website design & build",
+    "metaDescription": "Website design and build from Brandingdex: landing pages and business websites that are responsive, clear, and ready for search. Packages from $500.",
+    "eyebrow": "SERVICES / WEBSITE DESIGN",
+    "headline": "A website that makes\nyou easy to *choose.*",
+    "lead": "Your website is often the first real conversation someone has with your business. We design and build responsive websites that make what you do clear, look unmistakably yours, and give every visitor an obvious next step.",
+    "forTitle": "For one page or a full site.",
+    "for": [
+      { "title": "You need one focused destination.", "text": "A landing page for a personal brand, a campaign, or a new offer." },
+      { "title": "You run a service business.", "text": "A polished multi-page website with room to tell your story and explain what you do." },
+      { "title": "You have more to say.", "text": "Richer content, a considered visitor journey, and a collection for work, articles, or services." }
+    ],
+    "includedTitle": "Designed, built, and handed over.",
+    "included": [
+      { "title": "UX/UI design", "text": "Page layouts tailored to your brand and built around what your visitors need to find." },
+      { "title": "Responsive build", "text": "A website that looks and works properly on phones, tablets, and desktops." },
+      { "title": "Contact & enquiries", "text": "Contact form setup and social links, so interested visitors can reach you." },
+      { "title": "Search foundations", "text": "Page titles, descriptions, and indexing setup, so search engines can understand your site." },
+      { "title": "Analytics", "text": "Analytics setup, so you can see how people find and use your website." },
+      { "title": "Handover & fixes", "text": "Editable content setup, a clear handover, and a bug-fix period after launch." }
+    ],
+    "packages": ["website-launch", "business-website", "website-growth"],
+    "packagesNote": "",
+    "pricingCategory": "web",
+    "portfolioCategory": "website",
+    "faq": [
+      { "q": "What is separate from website pricing?", "a": "Domain registration, hosting, paid plugins, platform subscriptions, stock assets, copywriting, and ongoing maintenance are separate unless your proposal includes them. E-commerce and custom apps require a tailored quote." },
+      { "q": "What do I need to provide?", "a": "Your goals, feedback, and approved website text and imagery. Website-only packages assume you already have a usable brand identity. Content support can be added to your quote." },
+      { "q": "Do you offer design-only projects?", "a": "Yes. If you already have a developer, ask for a UX/UI-only scope. The listed website packages include design and build; standalone design is quoted around your requirements." },
+      { "q": "I need a brand and a website. Where do I start?", "a": "Brand + Website combines Brand Identity and Business Website under one creative direction and one coordinated delivery process, from $1,750." }
+    ]
+  },
+  {
+    "slug": "creative-partner",
+    "name": "Ongoing design support",
+    "homeTitle": "Keep moving forward.",
+    "summary": "Campaign creative, logo animation, and ongoing design support to keep your brand consistent as the business grows.",
+    "metaTitle": "Ongoing design support — Creative Partner",
+    "metaDescription": "Creative Partner from Brandingdex: monthly design support for social assets, presentations, campaign creative, and website updates. From $650 per month.",
+    "eyebrow": "SERVICES / CREATIVE PARTNER",
+    "headline": "Keep moving\n*forward.*",
+    "lead": "A brand is not finished at launch. Creative Partner gives you consistent design support for the work that keeps coming—social assets, presentations, campaign creative, and website updates—without starting from scratch each time.",
+    "forTitle": "For teams with steady design needs.",
+    "for": [
+      { "title": "You publish regularly.", "text": "Social content, presentations, and campaigns need to look like they come from the same business." },
+      { "title": "You have no in-house designer.", "text": "You want reliable design capacity without hiring for a full-time role." },
+      { "title": "You want to stay consistent.", "text": "As more people create materials, someone needs to keep the brand held together." }
+    ],
+    "includedTitle": "Steady capacity, agreed priorities.",
+    "included": [
+      { "title": "12 design hours a month", "text": "A set amount of design time, reserved for your business each month." },
+      { "title": "Everyday design", "text": "Social assets, presentations, and website updates, produced in your brand." },
+      { "title": "Campaign creative", "text": "Visuals for launches, promotions, and announcements as they come up." },
+      { "title": "Weekly priorities", "text": "We agree what matters most each week, with one active request at a time." }
+    ],
+    "packages": ["creative-partner"],
+    "packagesNote": "Creative Partner works best once you have a brand identity in place. Starting from scratch? Begin with a brand identity package.",
+    "pricingCategory": "more",
+    "portfolioCategory": "",
+    "faq": [
+      { "q": "What happens to unused hours?", "a": "The partnership renews monthly, and unused hours do not roll over. Weekly priorities help make sure your hours go to the work that matters most." },
+      { "q": "How do revisions work?", "a": "Revisions count toward your monthly hours, so you decide how the time is best spent." },
+      { "q": "How is it paid?", "a": "Monthly creative support is paid at the start of each month. Your proposal sets the final terms." }
+    ]
+  }
+]
