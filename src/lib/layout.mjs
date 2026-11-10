@@ -81,7 +81,7 @@ function nav(site, current, ctx) {
   <div class="links" id="nav-links">${links}</div>
   <div class="nav-actions">
     <a class="pill" href="/contact/">Let’s talk <span>↗</span></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><i aria-hidden="true"></i><span>Menu</span></button>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links"><i aria-hidden="true"></i><span class="visually-hidden">Menu</span></button>
   </div>
 </nav>`;
 }

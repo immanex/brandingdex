@@ -138,7 +138,7 @@ async function main() {
     navigation,
     ogImages,
     year: new Date().getUTCFullYear(),
-    assets: { css: "/assets/site.css", js: "/assets/site.js", scorecard: "" }
+    assets: { css: "/assets/site.css", js: "/assets/site.js", scorecard: "/assets/scorecard.js" }
   };
 
   await mkdir(path.join(output, "assets"), { recursive: true });
