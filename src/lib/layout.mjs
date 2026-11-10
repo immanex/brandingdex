@@ -17,7 +17,7 @@ const SOCIAL_LABELS = {
   behance: "Behance", dribbble: "Dribbble", tiktok: "TikTok", youtube: "YouTube"
 };
 
-export const DEFAULT_OG = "/assets/og/default.png";
+export const DEFAULT_OG = "/assets/og/default.jpg";
 
 export const whatsappNumber = site => String(site.contact.whatsapp || "").replace(/\D/g, "");
 export const whatsappLink = (site, message) =>

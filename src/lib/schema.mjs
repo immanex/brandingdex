@@ -12,7 +12,7 @@ export function organization(site) {
     name: site.name,
     url: site.url + "/",
     logo: site.url + "/assets/icons/icon-512.png",
-    image: site.url + "/assets/og/default.png",
+    image: site.url + "/assets/og/default.jpg",
     description: site.description,
     slogan: site.tagline
   };
@@ -72,7 +72,7 @@ export const article = (site, post) => ({
   datePublished: post.date,
   dateModified: post.updated || post.date,
   mainEntityOfPage: site.url + "/insights/" + post.slug + "/",
-  image: /^https:\/\//i.test(post.cover || "") ? post.cover : site.url + (post.cover || "/assets/og/default.png"),
+  image: /^https:\/\//i.test(post.cover || "") ? post.cover : site.url + (post.cover || "/assets/og/default.jpg"),
   author: { "@type": "Organization", name: site.name, url: site.url + "/" },
   publisher: { "@id": site.url + "/#organization" }
 });

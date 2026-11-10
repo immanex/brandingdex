@@ -5,6 +5,7 @@ import site from "../site.config.mjs";
 import { page as renderPage } from "../src/lib/layout.mjs";
 import { markdown, readingMinutes } from "../src/lib/markdown.mjs";
 import { contentPage } from "../src/lib/content-pages.mjs";
+import { rss } from "../src/lib/feed.mjs";
 import home from "../src/pages/home.mjs";
 import portfolio from "../src/pages/portfolio.mjs";
 import pricing from "../src/pages/pricing.mjs";
@@ -14,6 +15,7 @@ import contact from "../src/pages/contact.mjs";
 import insights from "../src/pages/insights.mjs";
 import scorecardPage from "../src/pages/scorecard.mjs";
 import legal from "../src/pages/legal.mjs";
+import notFound from "../src/pages/not-found.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const output = path.join(root, "dist");
@@ -105,7 +107,10 @@ async function writePage(ctx, options) {
   const route = options.path || "/";
   if (!route.startsWith("/") || route.includes("..")) throw new Error(`Unsafe page route: ${route}`);
   const directory = path.join(output, ...route.split("/").filter(Boolean));
-  const target = route === "/" ? path.join(output, "index.html") : path.join(directory, "index.html");
+  // Routes ending in .html (such as /404.html) are written as that exact file.
+  const target = route === "/" ? path.join(output, "index.html")
+    : route.endsWith(".html") ? directory
+    : path.join(directory, "index.html");
   await mkdir(path.dirname(target), { recursive: true });
   await writeFile(target, renderPage(ctx, options), "utf8");
 }
@@ -145,7 +150,7 @@ async function main() {
   await cp(path.join(root, "content/scorecard.json"), path.join(output, "assets/scorecard.json"));
   await cp(path.join(root, "src/static"), output, { recursive: true, force: true });
 
-  const templates = [home, portfolio, pricing, servicesPage, about, contact, insights, scorecardPage, legal];
+  const templates = [home, portfolio, pricing, servicesPage, about, contact, insights, scorecardPage, legal, notFound];
   const options = templates.flatMap(template => {
     const result = template(ctx);
     return result ? (Array.isArray(result) ? result : [result]) : [];
@@ -158,6 +163,7 @@ async function main() {
     paths.add(pageOptions.path);
     await writePage(ctx, pageOptions);
   }
+  await writeFile(path.join(output, "feed.xml"), rss(ctx), "utf8");
 
   console.log(`Built ${options.length} pages into dist/`);
 }
