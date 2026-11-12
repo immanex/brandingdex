@@ -40,7 +40,10 @@ export const linkTag = link =>
   `<a href="${esc(link.href)}"${link.external ? ' target="_blank" rel="noopener"' : ""}${link.track ? ` data-track="${link.track}"` : ""}>${esc(link.label)}${link.external ? " ↗" : ""}</a>`;
 
 export function subscribeForm(ctx, source) {
-  return `<form class="subscribe" data-form="subscribe" name="newsletter" action="/newsletter/confirmed/" method="post" data-netlify="true" netlify-honeypot="company_url">
+  const formAttrs = ctx.site.forms.provider === "brevo"
+    ? 'action="/api/newsletter" data-ajax="true"'
+    : 'action="/newsletter/confirmed/" data-netlify="true" netlify-honeypot="company_url"';
+  return `<form class="subscribe" data-form="subscribe" name="newsletter" ${formAttrs} method="post">
   <div class="subscribe-row">
     <label class="visually-hidden" for="subscribe-${source}">Email address</label>
     <input id="subscribe-${source}" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
@@ -48,6 +51,7 @@ export function subscribeForm(ctx, source) {
   </div>
   <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="company_url" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="source" value="${source}">
+  <input type="hidden" name="form_path" value="${source === "scorecard" ? "/brand-scorecard/" : "/insights/"}">
   <p class="form-note">No spam. Unsubscribe anytime. See our <a href="/privacy/">privacy policy</a>.</p>
   <p class="form-status" role="status" hidden></p>
 </form>`;

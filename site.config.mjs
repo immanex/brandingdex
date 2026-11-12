@@ -7,12 +7,14 @@
 // Secrets (API keys) do NOT go in this file. They are set on your hosting
 // account as environment variables. See LAUNCH-GUIDE.md.
 
+const formProvider = process.env.FORM_PROVIDER === "brevo" ? "brevo" : "netlify";
+
 export default {
   name: "Brandingdex",
 
   // Your live web address, without a trailing slash.
   // Used for Google, link previews, the sitemap and confirmation emails.
-  // On Netlify this follows the site's main address (the custom domain once one is connected).
+  // Override this during a build if the canonical domain changes.
   url: process.env.URL || "https://brandingdex.com",
 
   tagline: "Built to mean more. Designed to stand out.",
@@ -47,7 +49,8 @@ export default {
   },
 
   newsletter: {
-    enabled: true,
+    // The Vercel build hides subscription controls until a Brevo list is set.
+    enabled: formProvider !== "brevo" || Number(process.env.BREVO_NEWSLETTER_LIST_ID || 0) > 0,
     name: "Brand notes",
     pitch: "Practical notes on brand identity and websites for growing businesses. Occasional, useful, easy to leave."
   },
@@ -55,16 +58,17 @@ export default {
   // Email delivery and newsletter lists (Brevo). The API key itself is a secret
   // and is set on your host as BREVO_API_KEY.
   email: {
-    notifyTo: "",              // inbox that receives enquiries (defaults to contact.email)
-    fromEmail: "",             // verified sender on your domain (defaults to contact.email)
+    notifyTo: process.env.CONTACT_NOTIFY_TO || "", // inbox that receives enquiries (defaults to contact.email)
+    fromEmail: process.env.BREVO_FROM_EMAIL || "", // verified sender on your domain (defaults to contact.email)
     fromName: "Brandingdex",
-    newsletterListId: 0,       // Brevo list for newsletter subscribers
-    leadsListId: 0,            // Brevo list for people who send an enquiry (optional)
-    doubleOptInTemplateId: 0   // Brevo double opt-in template; 0 = add subscribers immediately
+    newsletterListId: Number(process.env.BREVO_NEWSLETTER_LIST_ID || 0), // Brevo list for newsletter subscribers
+    leadsListId: Number(process.env.BREVO_LEADS_LIST_ID || 0), // Brevo list for people who send an enquiry (optional)
+    doubleOptInTemplateId: Number(process.env.BREVO_DOUBLE_OPT_IN_TEMPLATE_ID || 0) // 0 = add subscribers immediately
   },
 
   forms: {
-    turnstileSiteKey: ""       // optional Cloudflare Turnstile site key (spam protection)
+    provider: formProvider,
+    turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || "" // optional Cloudflare Turnstile site key (spam protection)
   },
 
   analytics: {

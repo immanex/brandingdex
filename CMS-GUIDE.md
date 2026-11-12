@@ -18,19 +18,22 @@ Sveltia can edit a local checkout without remote authentication. Its local repos
 
 ## Live editing
 
-The admin is connected to the `immanex/brandingdex` repository in `src/static/admin/config.yml`; change it there if the repository moves. Give editors write access to the repository. Each saved content change is a repository commit and triggers a new Netlify deploy.
+The admin is connected to the `immanex/brandingdex` repository in `src/static/admin/config.yml`; change it there if the repository moves. Give editors write access to the repository. On Vercel, each saved content change commits to `main` and triggers a new production deployment. The admin uses Sveltia CMS's GitHub token sign-in, so it does not need Netlify OAuth.
 
-GitHub sign-in on the live site goes through Netlify:
-
-1. Create a GitHub OAuth app at <https://github.com/settings/applications/new>. Use the site address as the homepage URL and `https://api.netlify.com/auth/done` as the authorization callback URL.
-2. Copy the client ID and generate a client secret.
-3. In Netlify, open **Project configuration → Security → OAuth**, choose **Install provider → GitHub**, and paste both values. Do not use Netlify Identity.
-
-Editors can also sign in with a GitHub personal access token instead.
+At `/admin/`, choose **Sign In with Token** and create a GitHub token with the repository access requested by Sveltia CMS. Keep the token private. Editors can also use the local repository workflow without a token.
 
 ## Form submissions
 
-The project brief forms and newsletter sign-ups use Netlify Forms. After the first deploy, open **Forms** in Netlify and choose **Enable form detection**, then redeploy. Submissions appear under three forms: `project-brief` (contact page), `quick-brief` (home page), and `newsletter`. Add email notifications under **Project configuration → Notifications → Emails and webhooks → Form submission notifications**.
+Vercel builds send project briefs and newsletter sign-ups through the API routes in `api/`, which use Brevo. Set these variables in the Vercel project before enabling the production domain:
+
+- `BREVO_API_KEY`: private Brevo API key.
+- `BREVO_FROM_EMAIL`: verified sender address in Brevo.
+- `CONTACT_NOTIFY_TO`: inbox for project briefs; defaults to the public contact email in `site.config.mjs`.
+- `BREVO_NEWSLETTER_LIST_ID`: Brevo contact list ID. Newsletter forms stay hidden on Vercel until this is configured.
+- `BREVO_DOUBLE_OPT_IN_TEMPLATE_ID`: optional Brevo double opt-in template ID. Without it, a visitor is added to the list after submitting.
+- `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`: optional Cloudflare Turnstile site and secret keys. Configure both together.
+
+The ordinary `npm run build` remains configured for Netlify Forms. Vercel uses `npm run build:vercel` and the Vercel functions for submissions. For an existing Netlify deploy, enable form detection there and keep its notification settings until the Vercel domain cutover is complete.
 
 The site build writes static files to `dist/`; run it with `npm run build`.
 

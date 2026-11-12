@@ -36,8 +36,11 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
     ? `<div class="cf-turnstile" data-sitekey="${esc(site.forms.turnstileSiteKey)}" data-theme="dark"></div>`
     : "";
 
-  // Netlify Forms picks these up at deploy time. The two variants have different fields, so each gets its own name.
-  return `<form class="brief-form" data-form="contact" name="${compact ? "quick-brief" : "project-brief"}" action="/thanks/" method="post" data-netlify="true" netlify-honeypot="company_url">
+  // Netlify handles submissions on the current deployment; Vercel posts to its Brevo-backed function.
+  const formAttrs = site.forms.provider === "brevo"
+    ? 'action="/api/contact" data-ajax="true"'
+    : 'action="/thanks/" data-netlify="true" netlify-honeypot="company_url"';
+  return `<form id="${compact ? "quick-brief-form" : "project-brief-form"}" class="brief-form" data-form="contact" name="${compact ? "quick-brief" : "project-brief"}" ${formAttrs} method="post">
   <div class="package-choice" hidden></div>
   ${compact ? "" : '<div class="field-row">'}
     <label>Your name<input name="name" required autocomplete="name" maxlength="100" placeholder="How should we call you?"></label>
@@ -49,6 +52,7 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
   <label>A little about your project<textarea name="project" required rows="${compact ? 3 : 5}" maxlength="5000" placeholder="Your business, your ambition, your next big step..."></textarea></label>
   ${newsletter}
   <input type="hidden" name="context" value="${esc(context)}">
+  <input type="hidden" name="form_path" value="${compact ? "/" : "/contact/"}">
   <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="company_url" tabindex="-1" autocomplete="off"></label></div>
   ${turnstile}
   <button class="submit" type="submit">Send project brief <span>↗</span></button>

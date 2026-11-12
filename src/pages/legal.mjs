@@ -18,9 +18,20 @@ function privacy(site) {
   if (site.analytics.metaPixelId) analytics.push("- **Meta Pixel** (Meta) helps us measure and improve our advertising on Facebook and Instagram. It sets cookies and is only loaded if you accept analytics cookies.");
   if (site.analytics.cloudflareToken) analytics.push("- **Cloudflare Web Analytics** counts page views without cookies and without identifying individual visitors.");
   if (!analytics.length) analytics.push("We do not currently use analytics or advertising cookies on this website.");
-  const providers = [
-    "- **Netlify** (Netlify, Inc., United States), which hosts the website, receives and stores the forms you send us, and processes technical data such as your IP address to keep the website secure and filter spam."
-  ];
+  const newsletterPrivacy = site.newsletter.enabled
+    ? `### When you subscribe to our newsletter\n\nWe collect your email address so we can send you ${site.newsletter.name}. We only send it with your consent, and every email includes an unsubscribe link.`
+    : "";
+  const retention = site.newsletter.enabled
+    ? "We keep enquiry details for as long as we need them to respond to you and to maintain our business records, and delete them when they are no longer needed. We keep your newsletter subscription until you unsubscribe."
+    : "We keep enquiry details for as long as we need them to respond to you and to maintain our business records, and delete them when they are no longer needed.";
+  const providers = site.forms.provider === "brevo"
+    ? [
+      "- **Vercel** hosts the website and processes technical data such as your IP address when you visit or submit a form.",
+      `- **Brevo** receives project briefs so we can reply to you${site.newsletter.enabled ? ", and stores your email address when you subscribe to the newsletter" : ""}.`
+    ]
+    : [
+      "- **Netlify** hosts the website, receives and stores the forms you send us, and processes technical data such as your IP address to keep the website secure and filter spam."
+    ];
   if (site.analytics.ga4Id) providers.push("- **Google**, for Google Analytics, if you accept analytics cookies.");
   if (site.analytics.metaPixelId) providers.push("- **Meta**, for the Meta Pixel, if you accept analytics cookies.");
   if (site.analytics.cloudflareToken || site.forms.turnstileSiteKey) providers.push("- **Cloudflare**, for " + [site.analytics.cloudflareToken && "cookie-free analytics", site.forms.turnstileSiteKey && "spam protection on our forms"].filter(Boolean).join(" and ") + ".");
@@ -40,9 +51,7 @@ We collect the details you give us: your name, email address, business name, the
 
 We use this information to reply to you, prepare a proposal, and keep a record of our conversation. We process it because you asked us to get in touch, and because we have a legitimate interest in responding to enquiries.
 
-### When you subscribe to our newsletter
-
-We collect your email address so we can send you ${site.newsletter.name}. We only send it with your consent, and every email includes an unsubscribe link.
+${newsletterPrivacy}
 
 ### When you use the Brand Scorecard
 
@@ -64,7 +73,7 @@ Some of these providers process information outside Nigeria. Where they do, we r
 
 ## How long we keep it
 
-We keep enquiry details for as long as we need them to respond to you and to maintain our business records, and delete them when they are no longer needed. We keep your newsletter subscription until you unsubscribe.
+${retention}
 
 ## Your rights
 

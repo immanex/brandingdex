@@ -2,6 +2,7 @@ backend:
   name: github
   repo: immanex/brandingdex
   branch: main
+  auth_methods: [token]
 
 media_folder: /src/static/assets/uploads
 public_folder: /assets/uploads

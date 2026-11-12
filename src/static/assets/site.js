@@ -1,5 +1,54 @@
 // Small site-wide interactions that keep the static pages usable without a framework.
 
+for (const form of document.querySelectorAll("form[data-ajax]")) {
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    const status = form.querySelector(".form-status");
+    const button = form.querySelector('button[type="submit"]');
+    const originalText = button?.textContent;
+    if (status) {
+      status.hidden = false;
+      status.textContent = "Sending…";
+    }
+    if (button) button.disabled = true;
+
+    try {
+      const body = new URLSearchParams();
+      for (const [key, value] of new FormData(form)) {
+        if (typeof value === "string") body.append(key, value);
+      }
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString()
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.error || "We could not send that just now. Please try again.");
+      if (result.redirect) {
+        window.location.assign(result.redirect);
+        return;
+      }
+      if (status) status.textContent = result.message || "Thank you. Your message has been received.";
+      form.reset();
+    } catch (error) {
+      if (status) status.textContent = error.message || "We could not send that just now. Please try again.";
+    } finally {
+      if (button) {
+        button.disabled = false;
+        if (originalText) button.textContent = originalText;
+      }
+    }
+  });
+}
+
+if (new URLSearchParams(window.location.search).has("form-error")) {
+  const status = document.querySelector("form[data-ajax] .form-status");
+  if (status) {
+    status.hidden = false;
+    status.textContent = "We could not send that just now. Please try again, or email hello@brandingdex.com.";
+  }
+}
+
 const priceTabs = [...document.querySelectorAll("[data-price-filter]")];
 const priceGrid = document.querySelector(".price-grid[data-tabs]");
 const priceCards = [...document.querySelectorAll("[data-package-category]")];
