@@ -1,5 +1,24 @@
 // Small site-wide interactions that keep the static pages usable without a framework.
 
+const receiptStatus = document.querySelector("[data-receipt-status] span:last-child");
+const receiptResult = new URLSearchParams(window.location.search).get("receipt");
+if (receiptStatus && receiptResult === "sent") {
+  receiptStatus.textContent = "A copy of your brief has been sent to the email address you provided.";
+} else if (receiptStatus && receiptResult === "not-sent") {
+  receiptStatus.textContent = "Your brief reached our team, but we could not send the email copy this time. We’ll still reply by email.";
+}
+
+const requestedPackage = new URLSearchParams(window.location.search).get("package");
+if (requestedPackage) {
+  const packageSelect = document.querySelector('form[data-form="contact"] select[name="package"]');
+  const selectedOption = [...(packageSelect?.options || [])].find(option => option.value === requestedPackage);
+  if (packageSelect && selectedOption) {
+    packageSelect.value = selectedOption.value;
+    const serviceSelect = packageSelect.form?.querySelector('select[name="service"]');
+    if (serviceSelect && selectedOption.dataset.service) serviceSelect.value = selectedOption.dataset.service;
+  }
+}
+
 for (const form of document.querySelectorAll("form[data-ajax]")) {
   form.addEventListener("submit", async event => {
     event.preventDefault();
@@ -8,6 +27,7 @@ for (const form of document.querySelectorAll("form[data-ajax]")) {
     const originalText = button?.textContent;
     if (status) {
       status.hidden = false;
+      status.classList.remove("is-error");
       status.textContent = "Sending…";
     }
     if (button) button.disabled = true;
@@ -31,7 +51,10 @@ for (const form of document.querySelectorAll("form[data-ajax]")) {
       if (status) status.textContent = result.message || "Thank you. Your message has been received.";
       form.reset();
     } catch (error) {
-      if (status) status.textContent = error.message || "We could not send that just now. Please try again.";
+      if (status) {
+        status.classList.add("is-error");
+        status.textContent = error.message || "We could not send that just now. Please try again.";
+      }
     } finally {
       if (button) {
         button.disabled = false;
@@ -39,12 +62,18 @@ for (const form of document.querySelectorAll("form[data-ajax]")) {
       }
     }
   });
+
+  form.addEventListener("input", () => {
+    const status = form.querySelector(".form-status");
+    if (status?.classList.contains("is-error")) status.hidden = true;
+  });
 }
 
 if (new URLSearchParams(window.location.search).has("form-error")) {
   const status = document.querySelector("form[data-ajax] .form-status");
   if (status) {
     status.hidden = false;
+    status.classList.add("is-error");
     status.textContent = "We could not send that just now. Please try again, or email hello@brandingdex.com.";
   }
 }

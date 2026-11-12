@@ -16,16 +16,16 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
     `<option value="${esc(item.name)}" data-service="${esc(item.service)}">${esc(item.name)} — from ${money(item.price)}${item.per ? " / " + item.per : ""}</option>`).join("");
   const details = compact ? "" : `
   <div class="field-row">
-    <label>Business or brand name <input name="company" autocomplete="organization" maxlength="120" placeholder="Optional"></label>
-    <label>Package in mind
+    <label><span class="field-label">Business or brand name <span class="field-optional">Optional</span></span><input name="company" autocomplete="organization" maxlength="120" placeholder="e.g. Northstar Studio"></label>
+    <label><span class="field-label">Package in mind <span class="field-optional">Optional</span></span>
       <select name="package"><option value="">Not sure yet — help me choose</option>${packageOptions}</select>
     </label>
   </div>
   <div class="field-row">
-    <label>Budget range
+    <label><span class="field-label">Budget range <span class="field-optional">Optional</span></span>
       <select name="budget"><option value="">Select a range (optional)</option>${options(BUDGETS)}</select>
     </label>
-    <label>Timeline
+    <label><span class="field-label">Timeline <span class="field-optional">Optional</span></span>
       <select name="timeline"><option value="">Select a timeline (optional)</option>${options(TIMELINES)}</select>
     </label>
   </div>`;
@@ -33,28 +33,29 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
     ? `<label class="check"><input type="checkbox" name="newsletter" value="yes"><span>Also send me ${esc(site.newsletter.name)}—occasional notes on brand identity and websites.</span></label>`
     : "";
   const turnstile = site.forms.turnstileSiteKey
-    ? `<div class="cf-turnstile" data-sitekey="${esc(site.forms.turnstileSiteKey)}" data-theme="dark"></div>`
+    ? `<div class="cf-turnstile" data-sitekey="${esc(site.forms.turnstileSiteKey)}" data-theme="auto"></div>`
     : "";
 
   const formAttrs = 'action="/api/contact" data-ajax="true"';
   return `<form id="${compact ? "quick-brief-form" : "project-brief-form"}" class="brief-form" data-form="contact" name="${compact ? "quick-brief" : "project-brief"}" ${formAttrs} method="post">
+  ${compact ? "" : `<div class="brief-form-intro"><div class="brief-form-kicker"><span>PROJECT BRIEF</span><span>ABOUT 2 MINUTES</span></div><h2>Tell us what you’re planning.</h2><p>Fields marked * are required. Review and edit every answer before you send it.</p></div>`}
   <div class="package-choice" hidden></div>
   ${compact ? "" : '<div class="field-row">'}
-    <label>Your name<input name="name" required autocomplete="name" maxlength="100" placeholder="How should we call you?"></label>
-    <label>Email address<input name="email" type="email" required autocomplete="email" maxlength="254" placeholder="you@company.com"></label>
+    <label><span class="field-label">Your name <span class="field-required" aria-hidden="true">*</span></span><input name="name" required autocomplete="name" maxlength="100" placeholder="How should we call you?"></label>
+    <label><span class="field-label">Email address <span class="field-required" aria-hidden="true">*</span></span><input name="email" type="email" required autocomplete="email" maxlength="254" placeholder="you@company.com"></label>
   ${compact ? "" : "</div>"}
-  <label>What are you looking for?
+  <label><span class="field-label">What are you looking for? <span class="field-required" aria-hidden="true">*</span></span>
     <select name="service" required><option value="">Select a service</option>${options(SERVICES)}</select>
   </label>${details}
-  <label>A little about your project<textarea name="project" required rows="${compact ? 3 : 5}" maxlength="5000" placeholder="Your business, your ambition, your next big step..."></textarea></label>
+  <label><span class="field-label">A little about your project <span class="field-required" aria-hidden="true">*</span></span><textarea name="project" required rows="${compact ? 3 : 5}" maxlength="5000" placeholder="Your business, your ambition, your next big step..."></textarea></label>
   ${newsletter}
   <input type="hidden" name="context" value="${esc(context)}">
   <input type="hidden" name="form_path" value="${compact ? "/" : "/contact/"}">
   <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="company_url" tabindex="-1" autocomplete="off"></label></div>
   ${turnstile}
-  <button class="submit" type="submit">Send project brief <span>↗</span></button>
-  <p class="notice">We use your details only to reply to your enquiry. See our <a href="/privacy/">privacy policy</a>.</p>
-  <p class="form-status" role="status" hidden></p>
+  <button class="submit" type="submit">Send my project brief <span aria-hidden="true">↗</span></button>
+  <p class="notice">We’ll email you a copy of your brief and use your details to respond. See our <a href="/privacy/">privacy policy</a>.</p>
+  <p class="form-status" role="status" aria-live="polite" hidden></p>
   <div class="form-fallback" hidden></div>
 </form>`;
 }

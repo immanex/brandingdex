@@ -26,7 +26,7 @@ function privacy(site) {
     : "We keep enquiry details for as long as we need them to respond to you and to maintain our business records, and delete them when they are no longer needed.";
   const providers = [
     "- **Vercel** hosts the website and processes technical data such as your IP address when you visit or submit a form.",
-    `- **Brevo** receives project briefs so we can reply to you${site.newsletter.enabled ? ", and stores your email address when you subscribe to the newsletter" : ""}.`
+    `- **Brevo** receives project briefs so we can reply to you and send a copy to the email address you provided${site.newsletter.enabled ? ", and stores your email address when you subscribe to the newsletter" : ""}.`
   ];
   if (site.analytics.ga4Id) providers.push("- **Google**, for Google Analytics, if you accept analytics cookies.");
   if (site.analytics.metaPixelId) providers.push("- **Meta**, for the Meta Pixel, if you accept analytics cookies.");
@@ -46,6 +46,8 @@ ${entity} is a branding and design studio${place ? ` based in ${place}` : ""}. W
 We collect the details you give us: your name, email address, business name, the service or package you are interested in, your budget range and timeline if you share them, and what you tell us about your project. Our form provider also records technical details with each submission, such as your IP address, to help filter spam.
 
 We use this information to reply to you, prepare a proposal, and keep a record of our conversation. We process it because you asked us to get in touch, and because we have a legitimate interest in responding to enquiries.
+
+We also send a receipt of your brief to the email address you provide, so you can review the details you submitted.
 
 ${newsletterPrivacy}
 

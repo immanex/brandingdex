@@ -7,18 +7,23 @@ function contact(ctx) {
   const { site } = ctx;
   const direct = contactLinks(site);
   const body = `<section class="contact contact-page">
-  <div>
-    <div class="eyebrow">CONTACT US / YOUR NEXT CHAPTER</div>
-    <h1>Something good<br>starts with a<br><em>conversation.</em></h1>
-    <p>Launching, evolving, or ready for a new direction? Tell us what you have in mind.</p>
-    <ol class="next-steps">
-      <li><strong>Send your brief.</strong> A few lines about your business and what you need is enough.</li>
-      <li><strong>We reply ${esc(site.contact.responseTime)}.</strong> With questions, first thoughts, or a time to talk.</li>
-      <li><strong>You receive a written proposal.</strong> Scope, timeline, and total—confirmed before any work begins.</li>
-    </ol>
-    ${direct.length ? `<div class="direct"><div class="eyebrow">PREFER TO REACH US DIRECTLY?</div><ul>${direct.map(link => "<li>" + linkTag(link) + "</li>").join("")}</ul></div>` : ""}
+  <div class="contact-intro">
+    <div class="eyebrow"><span class="dot"></span>LET’S TALK / YOUR NEXT CHAPTER</div>
+    <h1>Make your next move <em>mean more.</em></h1>
+    <p class="contact-lead">Tell us where your business is heading and what you need help with. A few clear lines are plenty to get the conversation started.</p>
+    <div class="contact-promise">
+      <span class="contact-promise-index">01</span>
+      <div><strong>A thoughtful reply, ${esc(site.contact.responseTime)}.</strong><span>We’ll read your brief and follow up with useful next steps.</span></div>
+    </div>
+    <div class="contact-promise">
+      <span class="contact-promise-index">02</span>
+      <div><strong>Your answers stay editable.</strong><span>Nothing is sent until you choose “Send my project brief”.</span></div>
+    </div>
+    ${direct.length ? `<div class="direct contact-direct"><div class="eyebrow">PREFER TO REACH US DIRECTLY?</div><ul>${direct.map(link => "<li>" + linkTag(link) + "</li>").join("")}</ul></div>` : ""}
   </div>
-  ${contactForm(ctx)}
+  <div class="contact-form-wrap">
+    ${contactForm(ctx)}
+  </div>
 </section>
 <section class="included">
   <div class="eyebrow">NOT READY TO TALK YET?</div>
@@ -43,23 +48,27 @@ function contact(ctx) {
 
 function thanks(ctx) {
   const { site } = ctx;
-  const body = `<header class="portfolio-intro">
-  <div class="eyebrow">THANK YOU</div>
-  <h1>Your brief is<br><em>with us.</em></h1>
-  <p class="pricing-lead">Thank you for getting in touch. We’ll read it properly and reply ${esc(site.contact.responseTime)}.</p>
-</header>
-<section class="process">
-  <div><div class="eyebrow">WHAT HAPPENS NEXT</div><h2>Three simple steps.</h2></div>
-  <div class="steps">
-    <article><h3>01 — We review your brief.</h3><p>We look at your business, what you need, and where we can help most.</p></article>
-    <article><h3>02 — We reply with next steps.</h3><p>Questions, first thoughts, or a time to talk it through.</p></article>
-    <article><h3>03 — You receive a proposal.</h3><p>Scope, timeline, and total, confirmed in writing before any work begins.</p></article>
+  const body = `<section class="thanks-page">
+  <div class="thanks-topline"><div class="eyebrow"><span class="thanks-check" aria-hidden="true">✓</span>BRIEF RECEIVED</div><span class="thanks-reference">BRANDINGDEX / PROJECT ENQUIRY</span></div>
+  <div class="thanks-main">
+    <div class="thanks-copy">
+      <h1>Your brief is<br><em>with us.</em></h1>
+      <p class="thanks-lead">Thank you for sharing what you’re working on. We’ll read it properly and reply ${esc(site.contact.responseTime)}.</p>
+      <div class="receipt-notice" data-receipt-status aria-live="polite"><span class="receipt-symbol" aria-hidden="true">✉</span><span>We’re sending a copy of your brief to the email address you provided.</span></div>
+      <div class="thanks-actions">
+        <a class="pill" href="/pricing/">Explore packages <span aria-hidden="true">↗</span></a>
+        <a class="pill ghost" href="/">Back to homepage</a>
+        <a class="thanks-secondary" href="/contact/">Start another brief</a>
+      </div>
+    </div>
+    <aside class="thanks-next">
+      <div class="eyebrow">WHAT HAPPENS NEXT</div>
+      <article><span>01</span><div><h2>We review your brief.</h2><p>We look at your business, what you need, and where we can help most.</p></div></article>
+      <article><span>02</span><div><h2>We reply with next steps.</h2><p>Expect questions, first thoughts, or a time to talk it through.</p></div></article>
+      <article><span>03</span><div><h2>You receive a proposal.</h2><p>We confirm scope, timeline, and total in writing before any work begins.</p></div></article>
+    </aside>
   </div>
-</section>
-<aside class="price-banner">
-  <div><div class="eyebrow">WHILE YOU WAIT</div><h2>See how we think.</h2><p>Explore the portfolio, or read our notes on building a clearer brand.</p></div>
-  <div class="button-row"><a class="pill" href="/portfolio/">Explore the portfolio ↗</a><a class="pill ghost" href="/insights/">Read insights</a></div>
-</aside>`;
+</section>`;
 
   return { path: "/thanks/", title: "Thank you | Brandingdex", description: "Your project brief has been received.", body, noindex: true };
 }
