@@ -55,7 +55,7 @@ const body = `<header class="hero hero-with-work">
   <div class="eyebrow"><span class="dot"></span>Independent thinking. Lasting impressions.</div>
   <h1>Built to mean more.<br>Designed to <em>stand out.</em></h1>
   <div class="hero-bottom">
-    <p>Brand strategy, identity and digital design for ambitious businesses in Europe, the UK and beyond. An independent studio based in Nigeria, built to work across borders.</p>
+    <p>We bring strategy, identity and digital design together to help ambitious businesses become clearer, more distinctive, and easier to choose.</p>
     <a class="pill" href="/portfolio/">Explore the portfolio <span>↘</span></a>
     <div class="small">INDEPENDENT BRANDING & DESIGN AGENCY<br>STRATEGY · IDENTITY · DIGITAL</div>
   </div>
@@ -126,7 +126,7 @@ ${insights}
   return [{
     path: "/",
     title: "Brandingdex — Brand identity & website design agency",
-    description: "An independent brand strategy and design studio for ambitious businesses in Europe, the UK, and beyond. Based in Nigeria, Brandingdex creates distinctive identities and considered digital experiences.",
+    description: "Brandingdex is an independent brand strategy and design studio helping ambitious businesses express their value through clear positioning, distinctive identities, and thoughtful digital experiences.",
     body,
     current: "home",
     schema: [organization(site), website(site)],

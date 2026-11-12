@@ -16,7 +16,7 @@ export default {
   url: process.env.URL || "https://www.brandingdex.com",
 
   tagline: "Built to mean more. Designed to stand out.",
-  description: "An independent brand strategy and design studio for ambitious businesses in Europe, the UK, and beyond. Based in Nigeria, Brandingdex creates distinctive identities and considered digital experiences.",
+  description: "Brandingdex is an independent brand strategy and design studio helping ambitious businesses express their value through clear positioning, distinctive identities, and thoughtful digital experiences.",
 
   location: {
     city: "Uyo",
