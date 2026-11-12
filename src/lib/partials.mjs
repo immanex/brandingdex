@@ -36,10 +36,7 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
     ? `<div class="cf-turnstile" data-sitekey="${esc(site.forms.turnstileSiteKey)}" data-theme="dark"></div>`
     : "";
 
-  // Netlify handles submissions on the current deployment; Vercel posts to its Brevo-backed function.
-  const formAttrs = site.forms.provider === "brevo"
-    ? 'action="/api/contact" data-ajax="true"'
-    : 'action="/thanks/" data-netlify="true" netlify-honeypot="company_url"';
+  const formAttrs = 'action="/api/contact" data-ajax="true"';
   return `<form id="${compact ? "quick-brief-form" : "project-brief-form"}" class="brief-form" data-form="contact" name="${compact ? "quick-brief" : "project-brief"}" ${formAttrs} method="post">
   <div class="package-choice" hidden></div>
   ${compact ? "" : '<div class="field-row">'}

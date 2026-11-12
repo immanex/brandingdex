@@ -40,9 +40,7 @@ export const linkTag = link =>
   `<a href="${esc(link.href)}"${link.external ? ' target="_blank" rel="noopener"' : ""}${link.track ? ` data-track="${link.track}"` : ""}>${esc(link.label)}${link.external ? " ↗" : ""}</a>`;
 
 export function subscribeForm(ctx, source) {
-  const formAttrs = ctx.site.forms.provider === "brevo"
-    ? 'action="/api/newsletter" data-ajax="true"'
-    : 'action="/newsletter/confirmed/" data-netlify="true" netlify-honeypot="company_url"';
+  const formAttrs = 'action="/api/newsletter" data-ajax="true"';
   return `<form class="subscribe" data-form="subscribe" name="newsletter" ${formAttrs} method="post">
   <div class="subscribe-row">
     <label class="visually-hidden" for="subscribe-${source}">Email address</label>

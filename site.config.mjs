@@ -7,8 +7,6 @@
 // Secrets (API keys) do NOT go in this file. They are set on your hosting
 // account as environment variables. See LAUNCH-GUIDE.md.
 
-const formProvider = process.env.FORM_PROVIDER === "brevo" ? "brevo" : "netlify";
-
 export default {
   name: "Brandingdex",
 
@@ -49,8 +47,8 @@ export default {
   },
 
   newsletter: {
-    // The Vercel build hides subscription controls until a Brevo list is set.
-    enabled: formProvider !== "brevo" || Number(process.env.BREVO_NEWSLETTER_LIST_ID || 0) > 0,
+    // Keep subscription controls hidden until a Brevo list is set.
+    enabled: Number(process.env.BREVO_NEWSLETTER_LIST_ID || 0) > 0,
     name: "Brand notes",
     pitch: "Practical notes on brand identity and websites for growing businesses. Occasional, useful, easy to leave."
   },
@@ -67,7 +65,6 @@ export default {
   },
 
   forms: {
-    provider: formProvider,
     turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || "" // optional Cloudflare Turnstile site key (spam protection)
   },
 

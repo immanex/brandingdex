@@ -1,4 +1,4 @@
-// The page Netlify shows for any address that does not exist. It is written to dist/404.html.
+// The page shown for any address that does not exist. It is written to dist/404.html.
 
 export default function notFound() {
   const body = `<header class="portfolio-intro simple-page">

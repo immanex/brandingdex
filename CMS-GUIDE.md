@@ -18,7 +18,7 @@ Sveltia can edit a local checkout without remote authentication. Its local repos
 
 ## Live editing
 
-The admin is connected to the `immanex/brandingdex` repository in `src/static/admin/config.yml`; change it there if the repository moves. Give editors write access to the repository. On Vercel, each saved content change commits to `main` and triggers a new production deployment. The admin uses Sveltia CMS's GitHub token sign-in, so it does not need Netlify OAuth.
+The admin is connected to the `immanex/brandingdex` repository in `src/static/admin/config.yml`; change it there if the repository moves. Give editors write access to the repository. On Vercel, each saved content change commits to `main` and triggers a new production deployment. The admin uses Sveltia CMS's GitHub token sign-in.
 
 At `/admin/`, choose **Sign In with Token** and create a GitHub token with the repository access requested by Sveltia CMS. Keep the token private. Editors can also use the local repository workflow without a token.
 
@@ -33,9 +33,9 @@ Vercel builds send project briefs and newsletter sign-ups through the API routes
 - `BREVO_DOUBLE_OPT_IN_TEMPLATE_ID`: optional Brevo double opt-in template ID. Without it, a visitor is added to the list after submitting.
 - `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`: optional Cloudflare Turnstile site and secret keys. Configure both together.
 
-The ordinary `npm run build` remains configured for Netlify Forms. Vercel uses `npm run build:vercel` and the Vercel functions for submissions. For an existing Netlify deploy, enable form detection there and keep its notification settings until the Vercel domain cutover is complete.
+All builds use the Vercel API routes for form submissions. The production build command is `npm run build:vercel`; it writes the static site to `dist/` and deploys the functions in `api/`.
 
-The site build writes static files to `dist/`; run it with `npm run build`.
+The site build writes static files to `dist/`. Use `npm run build` for a local build; Vercel runs `npm run build:vercel`.
 
 ## Editing files directly
 

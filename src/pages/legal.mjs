@@ -24,14 +24,10 @@ function privacy(site) {
   const retention = site.newsletter.enabled
     ? "We keep enquiry details for as long as we need them to respond to you and to maintain our business records, and delete them when they are no longer needed. We keep your newsletter subscription until you unsubscribe."
     : "We keep enquiry details for as long as we need them to respond to you and to maintain our business records, and delete them when they are no longer needed.";
-  const providers = site.forms.provider === "brevo"
-    ? [
-      "- **Vercel** hosts the website and processes technical data such as your IP address when you visit or submit a form.",
-      `- **Brevo** receives project briefs so we can reply to you${site.newsletter.enabled ? ", and stores your email address when you subscribe to the newsletter" : ""}.`
-    ]
-    : [
-      "- **Netlify** hosts the website, receives and stores the forms you send us, and processes technical data such as your IP address to keep the website secure and filter spam."
-    ];
+  const providers = [
+    "- **Vercel** hosts the website and processes technical data such as your IP address when you visit or submit a form.",
+    `- **Brevo** receives project briefs so we can reply to you${site.newsletter.enabled ? ", and stores your email address when you subscribe to the newsletter" : ""}.`
+  ];
   if (site.analytics.ga4Id) providers.push("- **Google**, for Google Analytics, if you accept analytics cookies.");
   if (site.analytics.metaPixelId) providers.push("- **Meta**, for the Meta Pixel, if you accept analytics cookies.");
   if (site.analytics.cloudflareToken || site.forms.turnstileSiteKey) providers.push("- **Cloudflare**, for " + [site.analytics.cloudflareToken && "cookie-free analytics", site.forms.turnstileSiteKey && "spam protection on our forms"].filter(Boolean).join(" and ") + ".");
