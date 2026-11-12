@@ -1,5 +1,53 @@
 [
   {
+    "slug": "pitchnest-saas-product",
+    "name": "PitchNest",
+    "type": "Digital product",
+    "cat": "product",
+    "bg": "#151a2c",
+    "fg": "#f7c453",
+    "tag": "Rehearse before the room.",
+    "headline": "A more prepared pitch starts with practice.",
+    "challenge": "Founders need room to rehearse investor conversations, meet challenging questions, and understand how ready their story feels before a high-stakes meeting.",
+    "approach": "PitchNest brings session setup, AI investor practice, scores and reports, and pitch history into one founder workspace. A discovery area also lets users explore businesses and founders by category or region.",
+    "scope": "SaaS product | Founder tools | Pitch practice | Discovery",
+    "deliver": "An in-house SaaS experience with a marketing site, pre-pitch configuration, investor panel and practice modes, session reports, pitch history, and a founder discovery area.",
+    "concept": false,
+    "inHouse": true,
+    "liveUrl": "https://www.pitchnest.app/",
+    "cover": "/assets/portfolio/pitchnest/pitchnest-marketing-home.jpeg",
+    "gallery": [
+      {
+        "kind": "product",
+        "image": "/assets/portfolio/pitchnest/pitchnest-marketing-home.jpeg",
+        "label": "01 / Product overview",
+        "headline": "Get grilled by AI before investors do.",
+        "body": "The landing page introduces the pitch practice experience and gives founders a clear path to begin."
+      },
+      {
+        "kind": "product",
+        "image": "/assets/portfolio/pitchnest/pitchnest-discover.jpeg",
+        "label": "02 / Founder discovery",
+        "headline": "Meet the people building what is next.",
+        "body": "A searchable directory presents founders and businesses by industry, region, and category."
+      },
+      {
+        "kind": "product",
+        "image": "/assets/portfolio/pitchnest/pitchnest-pre-pitch-room.jpeg",
+        "label": "03 / Practice setup",
+        "headline": "Set up the rehearsal.",
+        "body": "Choose a practice mode, enter startup details, and select or upload a pitch deck before entering the room."
+      },
+      {
+        "kind": "product",
+        "image": "/assets/portfolio/pitchnest/pitchnest-pitch-history.jpeg",
+        "label": "04 / Session history",
+        "headline": "Keep a record of every pitch.",
+        "body": "The My Pitches area organises past sessions with scores, reports, and archive statistics."
+      }
+    ]
+  },
+  {
     "slug": "orbit-brand-identity",
     "name": "Orbit",
     "type": "Brand identity",

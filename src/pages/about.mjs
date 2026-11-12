@@ -24,7 +24,7 @@ export default function about(ctx) {
   const body = `<header class="portfolio-intro">
   <div class="eyebrow">ABOUT / THE STUDIO</div>
   <h1>Independent thinking.<br>Lasting <em>impressions.</em></h1>
-  <p class="pricing-lead">Brandingdex is an independent branding and design agency. We help ambitious businesses say clearly who they are—then create the identity and website that carry it forward.</p>
+  <p class="pricing-lead">Brandingdex is an independent brand strategy and design studio based in Nigeria, working with ambitious businesses in Europe, the UK, and beyond. We help teams say clearly who they are—then create the identity and digital experience that carry it forward.</p>
 </header>
 <section class="about-story" aria-labelledby="about-story-title">
   <div class="about-story-image">
@@ -67,7 +67,7 @@ ${ctaBand()}`;
     path: "/about/",
     current: "about",
     title: "About — Branding and design agency | Brandingdex",
-    description: "Meet Brandingdex, an independent branding and design agency creating clear strategy, distinctive identities, and professional websites.",
+    description: "Meet Brandingdex, an independent brand strategy and design studio based in Nigeria and working with ambitious businesses in Europe, the UK, and beyond.",
     body,
     schema: [breadcrumbs(site, [{ name: "About", path: "/about/" }]), organization(site)]
   }];

@@ -13,10 +13,10 @@ export default {
   // Your live web address, without a trailing slash.
   // Used for Google, link previews, the sitemap and confirmation emails.
   // Override this during a build if the canonical domain changes.
-  url: process.env.URL || "https://brandingdex.com",
+  url: process.env.URL || "https://www.brandingdex.com",
 
   tagline: "Built to mean more. Designed to stand out.",
-  description: "Brandingdex is a branding and design agency creating distinctive brand identities, clear strategy, and professional websites.",
+  description: "An independent brand strategy and design studio for ambitious businesses in Europe, the UK, and beyond. Based in Nigeria, Brandingdex creates distinctive identities and considered digital experiences.",
 
   location: {
     city: "Uyo",

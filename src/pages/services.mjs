@@ -40,7 +40,7 @@ ${ctaBand({ eyebrow: "NOT SURE WHERE TO START?", title: "Tell us where<br>you ar
     path: "/services/",
     current: "services",
     title: "Services — Brand strategy, identity & website design | Brandingdex",
-    description: "Brand strategy, brand identity design, professional website design, and ongoing design support for ambitious businesses. Clear packages with transparent starting prices.",
+    description: "Brand strategy, brand identity, and professional website design for ambitious businesses in Europe, the UK, and beyond. Based in Nigeria, with clear scopes and transparent starting prices.",
     body,
     schema: [breadcrumbs(site, [{ name: "Services", path: "/services/" }])]
   };

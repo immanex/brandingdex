@@ -55,7 +55,7 @@ const body = `<header class="hero hero-with-work">
   <div class="eyebrow"><span class="dot"></span>Independent thinking. Lasting impressions.</div>
   <h1>Built to mean more.<br>Designed to <em>stand out.</em></h1>
   <div class="hero-bottom">
-    <p>We build distinctive brand identities and professional websites for ambitious businesses. From your brand strategy to the experience your customers see online.</p>
+    <p>Brand strategy, identity and digital design for ambitious businesses in Europe, the UK and beyond. An independent studio based in Nigeria, built to work across borders.</p>
     <a class="pill" href="/portfolio/">Explore the portfolio <span>↘</span></a>
     <div class="small">INDEPENDENT BRANDING & DESIGN AGENCY<br>STRATEGY · IDENTITY · DIGITAL</div>
   </div>
@@ -74,7 +74,7 @@ const body = `<header class="hero hero-with-work">
     <div class="eyebrow">STRATEGY / IDENTITY / DIGITAL</div>
     <h2 id="studio-heading">Good design gets noticed.<br>A clear brand gets chosen.</h2>
     <p>Your business has something worth bringing into the world. We help you articulate it, give it a distinctive identity, and build the digital experience that carries it forward.</p>
-    <p>Brandingdex partners with ambitious founders and growing businesses to connect strategy, design, and execution—from the first big question to the smallest meaningful detail.</p>
+    <p>Brandingdex partners with ambitious founders and established teams to connect strategy, design, and execution—from the first big question to the smallest meaningful detail.</p>
     <p><a class="text-link" href="/about/">More about the studio &#8599;</a></p>
   </div>
 </section>
@@ -126,7 +126,7 @@ ${insights}
   return [{
     path: "/",
     title: "Brandingdex — Brand identity & website design agency",
-    description: "Brandingdex is a branding and design agency creating distinctive identities, clear strategy, and professional websites.",
+    description: "An independent brand strategy and design studio for ambitious businesses in Europe, the UK, and beyond. Based in Nigeria, Brandingdex creates distinctive identities and considered digital experiences.",
     body,
     current: "home",
     schema: [organization(site), website(site)],

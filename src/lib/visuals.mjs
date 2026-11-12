@@ -31,7 +31,7 @@ function cardVisual(project) {
 const initials = name => name.split(/\s+/).map(word => word.slice(0, 1)).join("").slice(0, 2).toUpperCase();
 
 export function projectCard(project) {
-  const label = project.concept ? "Illustrative concept" : "Project";
+  const label = project.inHouse ? "In-house product" : project.concept ? "Illustrative concept" : "Project";
   return '<a class="project-card" data-category="' + esc(project.cat) + '" href="/work/' + esc(project.slug) + '/">' +
     cardVisual(project) +
     '<div class="project-title"><span>' + esc(project.name + " — " + project.type) + "</span><span>↗</span></div>" +

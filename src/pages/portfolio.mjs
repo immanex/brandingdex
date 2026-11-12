@@ -3,11 +3,13 @@ import { DEFAULT_OG } from "../lib/layout.mjs";
 import { ctaBand } from "../lib/partials.mjs";
 import { breadcrumbs, creativeWork } from "../lib/schema.mjs";
 import { gallerySlide, projectCard } from "../lib/visuals.mjs";
+import { logoMarks } from "../lib/logo-marks.mjs";
 
 const FILTERS = [
   { id: "all", label: "All work" },
   { id: "identity", label: "Brand identity" },
   { id: "website", label: "Website design" },
+  { id: "product", label: "Digital product" },
   { id: "combined", label: "Brand & website" },
   { id: "stationery", label: "Stationery" }
 ];
@@ -29,7 +31,7 @@ function caseGalleryMarkup(project, gallery, galleryTitle) {
 
   return `<section class="case-gallery-section" aria-labelledby="gallery-title">
   <div class="gallery-title-row">
-    <div><div class="eyebrow">AUTO-PLAYING PROJECT VIEWS</div><h2 id="gallery-title">${galleryTitle}</h2><p>Preview each screen as it changes. Select the image to browse the full gallery.</p></div>
+    <div><div class="eyebrow">${project.cat === "product" ? "PRODUCT INTERFACE" : "AUTO-PLAYING PROJECT VIEWS"}</div><h2 id="gallery-title">${galleryTitle}</h2><p>Preview each screen as it changes. Select the image to browse the full gallery.</p></div>
   </div>
   <div class="case-carousel" data-case-carousel role="region" aria-roledescription="carousel" aria-label="${esc(project.name + " project screens")}">
     <div class="case-carousel-stage">${slides}</div>
@@ -43,7 +45,7 @@ function caseGalleryMarkup(project, gallery, galleryTitle) {
       </div>
     </div>
   </div>
-  <p class="gallery-hint">${project.concept ? "Illustrative concept" : "Project work"} · Screens advance automatically. Pause or use the arrows at any time.</p>
+  <p class="gallery-hint">${project.inHouse ? "In-house product" : project.concept ? "Illustrative concept" : "Project work"} · Screens advance automatically. Pause or use the arrows at any time.</p>
 </section>
 <dialog class="case-gallery-dialog" data-case-gallery-dialog aria-labelledby="case-gallery-dialog-title">
   <div class="case-gallery-dialog-shell">
@@ -68,19 +70,26 @@ function index(ctx) {
   const body = `<header class="portfolio-intro">
   <div class="eyebrow">THE PORTFOLIO / BRANDINGDEX</div>
   <h1>Our thinking.<br>Made <em>visible.</em></h1>
-  <p>Explore brand identities, professional website design, and the stationery that brings a brand into everyday use.</p>
+  <p>Explore brand identity, website and digital product work for ambitious businesses. Each case study shows the thinking behind the design.</p>
   ${hasConcepts ? '<p class="small">Illustrative concepts are clearly marked. They show our creative direction and do not represent client projects.</p>' : ""}
   <div class="filters" role="group" aria-label="Filter projects">${filters}</div>
   <p class="portfolio-count" role="status" id="count">Showing ${projects.length} project${projects.length === 1 ? "" : "s"}</p>
 </header>
 <div class="portfolio-grid" id="portfolio-grid" aria-label="Portfolio projects">${projects.map(projectCard).join("")}</div>
+<section class="logo-showcase" aria-labelledby="logo-showcase-title">
+  <div class="logo-showcase-head">
+    <div><div class="eyebrow">SELECTED LOGO &amp; IDENTITY WORK</div><h2 id="logo-showcase-title">Distinct marks.<br>Different worlds.</h2></div>
+    <p>A selection of marks and identity applications created for businesses across a range of sectors.</p>
+  </div>
+  <div class="logo-mark-grid">${logoMarks.map(mark => `<figure class="logo-mark-card"><div class="logo-mark-image"><img src="${esc(mark.image)}" alt="${esc(mark.name)} identity design" loading="lazy"></div><figcaption>${esc(mark.name)}</figcaption></figure>`).join("")}</div>
+</section>
 ${ctaBand({ className: "portfolio-contact" })}`;
 
   return {
     path: "/portfolio/",
     current: "portfolio",
-    title: "Portfolio — Brand identity & website design | Brandingdex",
-    description: "Explore Brandingdex brand identity, website design, and stationery work—each with a full case study and design gallery.",
+    title: "Portfolio | Brand identities, websites & digital products | Brandingdex",
+    description: "Explore Brandingdex brand identity, website and digital product work, with case studies and selected logo and identity marks.",
     body,
     schema: [breadcrumbs(site, [{ name: "Portfolio", path: "/portfolio/" }])]
   };
@@ -95,21 +104,22 @@ function caseStudy(ctx, project, position) {
     body: project.deliver
   }];
   const next = projects[(position + 1) % projects.length];
-  const status = project.concept ? "Self-initiated concept<br>No client affiliation" : "Client project";
-  const galleryTitle = project.cat === "website" ? "Website screens." : project.cat === "stationery" ? "Designs in use." : "Identity, in detail.";
+  const status = project.inHouse ? "In-house SaaS product" : project.concept ? "Self-initiated concept<br>No client affiliation" : "Client project";
+  const galleryTitle = project.cat === "website" ? "Website screens." : project.cat === "stationery" ? "Designs in use." : project.cat === "product" ? "Inside the product." : "Identity, in detail.";
   const path = "/work/" + project.slug + "/";
-  const ogImage = ogImages.has(project.slug) ? "/assets/og/" + project.slug + ".png" : DEFAULT_OG;
+  const ogImage = ogImages.has(project.slug) ? "/assets/og/" + project.slug + ".png" : (project.cover || DEFAULT_OG);
 
   const body = `<div id="case-page">
 <header class="case-head">
   <a class="back" href="/portfolio/">← All projects</a>
-  <div class="eyebrow">${esc(project.type)} / ${project.concept ? "CONCEPT CASE STUDY" : "CASE STUDY"}</div>
+  <div class="eyebrow">${esc(project.type)} / ${project.inHouse ? "IN-HOUSE PRODUCT" : project.concept ? "CONCEPT CASE STUDY" : "CASE STUDY"}</div>
   <h1>${esc(project.name)}<br><em>${esc(project.headline)}</em></h1>
   <div class="case-meta">
     <div><small>Project overview</small><p>${esc(project.tag)}${project.concept ? " An illustrative exploration of " + esc(project.type.toLowerCase()) + "." : ""}</p></div>
     <div><small>Scope</small><p>${esc(project.scope)}</p></div>
     <div><small>Project status</small><p>${status}</p></div>
   </div>
+  ${project.liveUrl ? `<p class="case-live-link"><a class="text-link" href="${esc(project.liveUrl)}" target="_blank" rel="noopener">Explore the live product <span aria-hidden="true">&#8599;</span></a></p>` : ""}
 </header>
 ${caseGalleryMarkup(project,gallery,galleryTitle)}
 <section class="case-story"><h2>The challenge.</h2><p>${esc(project.challenge)}</p></section>
