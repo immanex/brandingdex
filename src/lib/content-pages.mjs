@@ -10,7 +10,7 @@ const allowedEmbedHosts = {
 };
 const reservedSlugs = new Set([
   "admin", "assets", "api", "portfolio", "services", "pricing", "insights", "about",
-  "contact", "thanks", "newsletter", "privacy", "terms", "brand-scorecard"
+  "contact", "thanks", "newsletter", "privacy", "privacy-policy", "terms", "brand-scorecard"
 ]);
 
 function embedUrl(provider, value) {

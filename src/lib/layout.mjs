@@ -50,7 +50,7 @@ export function subscribeForm(ctx, source) {
   <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="company_url" tabindex="-1" autocomplete="off"></label></div>
   <input type="hidden" name="source" value="${source}">
   <input type="hidden" name="form_path" value="${source === "scorecard" ? "/brand-scorecard/" : "/insights/"}">
-  <p class="form-note">No spam. Unsubscribe anytime. See our <a href="/privacy/">privacy policy</a>.</p>
+  <p class="form-note">No spam. Unsubscribe anytime. See our <a href="/privacy-policy/">privacy policy</a>.</p>
   <p class="form-status" role="status" hidden></p>
 </form>`;
 }
@@ -106,7 +106,7 @@ function footer(ctx) {
   <nav class="footer-menu" aria-label="Footer">${links.join("")}</nav>
   <div class="footer-meta">
     <span>&copy; ${year} ${esc(site.name)} &middot; Brand identity / Digital design</span>
-    <span class="footer-legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>${site.analytics.ga4Id || site.analytics.metaPixelId ? '<button type="button" class="link-button" data-consent-open>Cookie settings</button>' : ""}</span>
+    <span class="footer-legal"><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms</a>${site.analytics.ga4Id || site.analytics.metaPixelId ? '<button type="button" class="link-button" data-consent-open>Cookie settings</button>' : ""}</span>
   </div>
 </footer>`;
 }

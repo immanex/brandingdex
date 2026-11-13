@@ -54,7 +54,7 @@ export function contactForm(ctx, { compact = false, context = "" } = {}) {
   <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="company_url" tabindex="-1" autocomplete="off"></label></div>
   ${turnstile}
   <button class="submit" type="submit">Send my project brief <span aria-hidden="true">↗</span></button>
-  <p class="notice">We’ll email you a copy of your brief and use your details to respond. See our <a href="/privacy/">privacy policy</a>.</p>
+  <p class="notice">We’ll email you a copy of your brief and use your details only to respond to your enquiry—not for marketing unless you ask for it. See our <a href="/privacy-policy/">privacy policy</a>.</p>
   <p class="form-status" role="status" aria-live="polite" hidden></p>
   <div class="form-fallback" hidden></div>
 </form>`;

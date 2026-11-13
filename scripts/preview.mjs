@@ -27,8 +27,12 @@ createServer(async (request, response) => {
       response.writeHead(403).end("Forbidden");
       return;
     }
-    if (pathname.endsWith("/")) target = path.join(target, "index.html");
-    const info = await stat(target);
+    // A folder serves its index.html with or without a trailing slash, as the host does.
+    let info = await stat(target);
+    if (info.isDirectory()) {
+      target = path.join(target, "index.html");
+      info = await stat(target);
+    }
     if (!info.isFile()) throw new Error("Not a file");
     response.writeHead(200, { "Content-Type": types[path.extname(target).toLowerCase()] || "application/octet-stream" });
     response.end(await readFile(target));

@@ -18,7 +18,7 @@ collections:
     slug:
       editable: true
       pattern:
-        - '^(?!(?:admin|assets|api|portfolio|services|pricing|insights|about|contact|thanks|newsletter|privacy|terms|brand-scorecard)$)[a-z0-9]+(?:-[a-z0-9]+)*$'
+        - '^(?!(?:admin|assets|api|portfolio|services|pricing|insights|about|contact|thanks|newsletter|privacy|privacy-policy|terms|brand-scorecard)$)[a-z0-9]+(?:-[a-z0-9]+)*$'
         - Use a lowercase hyphenated URL that does not replace a built-in site route.
     preview_path: '{{slug}}/'
     fields:

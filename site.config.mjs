@@ -83,7 +83,7 @@ export default {
   // Used in the privacy policy and terms pages.
   legal: {
     entity: "",                // registered business name, if different from "Brandingdex"
-    updated: "2026-11-10"      // date the policies were last reviewed (YYYY-MM-DD)
+    updated: "2026-11-13"      // date the policies were last reviewed (YYYY-MM-DD)
   },
 
   // Optional founder block on the About page. Hidden while name is empty.
