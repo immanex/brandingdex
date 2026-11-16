@@ -11,8 +11,38 @@ const FILTERS = [
   { id: "website", label: "Website design" },
   { id: "product", label: "Digital product" },
   { id: "combined", label: "Brand & website" },
-  { id: "stationery", label: "Stationery" }
+  { id: "stationery", label: "Stationery" },
+  { id: "print-merchandise", label: "Print & merchandise" }
 ];
+
+const CATEGORY_DETAILS = {
+  identity: {
+    heading: "Brand identities with a point of view",
+    description: "Explore distinctive identity systems shaped around each business, from the first mark to practical brand applications."
+  },
+  website: {
+    heading: "Website design, made clear",
+    description: "Explore responsive website concepts that pair clear structure with thoughtful visual design and a useful path forward.",
+    ogImage: "/assets/og/portfolio-website.png"
+  },
+  product: {
+    heading: "Digital products, made useful",
+    description: "Explore digital product design for clear workflows, useful tools and more confident customer experiences."
+  },
+  combined: {
+    heading: "Brand and website, working together",
+    description: "Explore connected brand and website work, designed to carry one clear story across every touchpoint."
+  },
+  stationery: {
+    heading: "Stationery with a sense of place",
+    description: "Explore stationery concepts that bring identity systems into business cards, documents and everyday communication."
+  },
+  "print-merchandise": {
+    heading: "Print and merchandise, made memorable",
+    description: "Explore business stationery, invoices, letterheads and branded merchandise designed to carry each identity into everyday use.",
+    ogImage: "/assets/og/portfolio-print-merchandise.png"
+  }
+};
 
 function caseGalleryMarkup(project, gallery, galleryTitle) {
   const slides = gallery.map((screen, index) => `<div class="case-carousel-slide" data-carousel-slide="${index}" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${gallery.length}"${index ? " hidden" : ""}>
@@ -60,38 +90,61 @@ function caseGalleryMarkup(project, gallery, galleryTitle) {
 </dialog>`;
 }
 
-function index(ctx) {
+function index(ctx, category = "all") {
   const { site, projects } = ctx;
   const count = id => id === "all" ? projects.length : projects.filter(project => project.cat === id).length;
-  const filters = FILTERS.filter(filter => count(filter.id)).map(filter =>
-    `<button type="button" data-filter="${filter.id}" aria-pressed="${filter.id === "all"}">${filter.label} <span>${String(count(filter.id)).padStart(2, "0")}</span></button>`).join("");
-  const hasConcepts = projects.some(project => project.concept);
-
-  const body = `<header class="portfolio-intro">
-  <div class="eyebrow">THE PORTFOLIO / BRANDINGDEX</div>
-  <h1>Our thinking.<br>Made <em>visible.</em></h1>
-  <p>Explore brand identity, website and digital product work for ambitious businesses. Each case study shows the thinking behind the design.</p>
-  ${hasConcepts ? '<p class="small">Illustrative concepts are clearly marked. They show our creative direction and do not represent client projects.</p>' : ""}
-  <div class="filters" role="group" aria-label="Filter projects">${filters}</div>
-  <p class="portfolio-count" role="status" id="count">Showing ${projects.length} project${projects.length === 1 ? "" : "s"}</p>
-</header>
-<div class="portfolio-grid" id="portfolio-grid" aria-label="Portfolio projects">${projects.map(projectCard).join("")}</div>
-<section class="logo-showcase" aria-labelledby="logo-showcase-title">
+  const selected = FILTERS.find(filter => filter.id === category) || FILTERS[0];
+  const categoryDetails = CATEGORY_DETAILS[category];
+  const categoryPath = id => id === "all" ? "/portfolio/" : `/portfolio/${id}/`;
+  const defaultTitle = "Portfolio | Brand identities, websites & digital products | Brandingdex";
+  const defaultDescription = "Explore Brandingdex brand identity, website and digital product work, with case studies and selected logo and identity marks.";
+  const pageTitle = categoryDetails ? `${selected.label} Portfolio | Brandingdex` : defaultTitle;
+  const pageDescription = categoryDetails?.description || defaultDescription;
+  const categoryProjects = projects.filter(project => project.cat === category);
+  const imageFor = id => {
+    const details = CATEGORY_DETAILS[id];
+    const items = projects.filter(project => project.cat === id);
+    return details?.ogImage || items.find(project => project.cover)?.cover || items.find(project => project.gallery?.some(screen => screen.image))?.gallery.find(screen => screen.image)?.image || DEFAULT_OG;
+  };
+  const ogImage = categoryDetails ? imageFor(category) : DEFAULT_OG;
+  const filters = FILTERS.filter(filter => count(filter.id)).map(filter => {
+    const details = CATEGORY_DETAILS[filter.id];
+    const title = details ? `${filter.label} Portfolio | Brandingdex` : defaultTitle;
+    const description = details?.description || defaultDescription;
+    return `<a href="${categoryPath(filter.id)}" data-filter="${filter.id}" data-heading="${esc(details?.heading || "Our thinking. Made visible.")}" data-title="${esc(title)}" data-description="${esc(description)}" data-og-image="${esc(imageFor(filter.id))}"${filter.id === category ? ' aria-current="page"' : ""}>${filter.label} <span>${String(count(filter.id)).padStart(2, "0")}</span></a>`;
+  }).join("");
+  const hasConcepts = (category === "all" ? projects : categoryProjects).some(project => project.concept);
+  const visibleCount = category === "all" ? projects.length : categoryProjects.length;
+  const logoShowcase = category === "all" ? `<section class="logo-showcase" aria-labelledby="logo-showcase-title">
   <div class="logo-showcase-head">
     <div><div class="eyebrow">SELECTED LOGO &amp; IDENTITY WORK</div><h2 id="logo-showcase-title">Distinct marks.<br>Different worlds.</h2></div>
     <p>A selection of marks and identity applications created for businesses across a range of sectors.</p>
   </div>
   <div class="logo-mark-grid">${logoMarks.map(mark => `<figure class="logo-mark-card"><div class="logo-mark-image"><img src="${esc(mark.image)}" alt="${esc(mark.name)} identity design" loading="lazy"></div><figcaption>${esc(mark.name)}</figcaption></figure>`).join("")}</div>
-</section>
+</section>` : "";
+
+  const body = `<header class="portfolio-intro">
+  <div class="eyebrow">${categoryDetails ? `SELECTED WORK / ${esc(selected.label.toUpperCase())}` : "THE PORTFOLIO / BRANDINGDEX"}</div>
+  <h1 id="portfolio-heading">${categoryDetails ? esc(categoryDetails.heading) : "Our thinking.<br>Made <em>visible.</em>"}</h1>
+  <p id="portfolio-description">${categoryDetails ? esc(categoryDetails.description) : "Explore brand identity, website and digital product work for ambitious businesses. Each case study shows the thinking behind the design."}</p>
+  ${hasConcepts ? '<p class="small">Illustrative concepts are clearly marked. They show our creative direction and do not represent client projects.</p>' : ""}
+  <div class="filters" role="group" aria-label="Filter projects">${filters}</div>
+  <div class="portfolio-filter-footer"><p class="portfolio-count" role="status" id="count">Showing ${visibleCount} project${visibleCount === 1 ? "" : "s"}</p><button type="button" class="portfolio-share-button" data-copy-portfolio-link>Copy this view's link <span aria-hidden="true">&#8599;</span></button><span class="portfolio-copy-status" data-portfolio-copy-status role="status" aria-live="polite"></span></div>
+</header>
+<div class="portfolio-grid" id="portfolio-grid" aria-label="Portfolio projects">${projects.map(project => projectCard(project, { hidden: category !== "all" && project.cat !== category })).join("")}</div>
+${logoShowcase}
 ${ctaBand({ className: "portfolio-contact" })}`;
 
   return {
-    path: "/portfolio/",
+    path: categoryPath(category),
     current: "portfolio",
-    title: "Portfolio | Brand identities, websites & digital products | Brandingdex",
-    description: "Explore Brandingdex brand identity, website and digital product work, with case studies and selected logo and identity marks.",
+    title: pageTitle,
+    description: pageDescription,
+    ogImage,
     body,
-    schema: [breadcrumbs(site, [{ name: "Portfolio", path: "/portfolio/" }])]
+    schema: [breadcrumbs(site, categoryDetails
+      ? [{ name: "Portfolio", path: "/portfolio/" }, { name: selected.label, path: categoryPath(category) }]
+      : [{ name: "Portfolio", path: "/portfolio/" }])]
   };
 }
 
@@ -104,15 +157,18 @@ function caseStudy(ctx, project, position) {
     body: project.deliver
   }];
   const next = projects[(position + 1) % projects.length];
-  const status = project.inHouse ? "In-house SaaS product" : project.concept ? "Self-initiated concept<br>No client affiliation" : "Client project";
-  const galleryTitle = project.cat === "website" ? "Website screens." : project.cat === "stationery" ? "Designs in use." : project.cat === "product" ? "Inside the product." : "Identity, in detail.";
+  const status = project.collection ? "Selected portfolio collection" : project.inHouse ? "In-house SaaS product" : project.concept ? "Self-initiated concept<br>No client affiliation" : "Client project";
+  const galleryTitle = project.cat === "website" ? "Website screens." : project.cat === "stationery" ? "Designs in use." : project.cat === "print-merchandise" ? "Print and merchandise, in use." : project.cat === "product" ? "Inside the product." : "Identity, in detail.";
   const path = "/work/" + project.slug + "/";
   const ogImage = ogImages.has(project.slug) ? "/assets/og/" + project.slug + ".png" : (project.cover || DEFAULT_OG);
 
   const body = `<div id="case-page">
 <header class="case-head">
+  <div class="case-head-actions">
   <a class="back" href="/portfolio/">← All projects</a>
-  <div class="eyebrow">${esc(project.type)} / ${project.inHouse ? "IN-HOUSE PRODUCT" : project.concept ? "CONCEPT CASE STUDY" : "CASE STUDY"}</div>
+  <button type="button" class="portfolio-share-button" data-copy-project-link>Copy project link <span aria-hidden="true">&#8599;</span></button>
+  </div>
+  <div class="eyebrow">${esc(project.type)} / ${project.collection ? "SELECTED COLLECTION" : project.inHouse ? "IN-HOUSE PRODUCT" : project.concept ? "CONCEPT CASE STUDY" : "CASE STUDY"}</div>
   <h1>${esc(project.name)}<br><em>${esc(project.headline)}</em></h1>
   <div class="case-meta">
     <div><small>Project overview</small><p>${esc(project.tag)}${project.concept ? " An illustrative exploration of " + esc(project.type.toLowerCase()) + "." : ""}</p></div>
@@ -147,5 +203,8 @@ ${caseGalleryMarkup(project,gallery,galleryTitle)}
 }
 
 export default function portfolio(ctx) {
-  return [index(ctx), ...ctx.projects.map((project, position) => caseStudy(ctx, project, position))];
+  const categoryPages = FILTERS
+    .filter(filter => filter.id !== "all" && CATEGORY_DETAILS[filter.id] && ctx.projects.some(project => project.cat === filter.id))
+    .map(filter => index(ctx, filter.id));
+  return [index(ctx), ...categoryPages, ...ctx.projects.map((project, position) => caseStudy(ctx, project, position))];
 }

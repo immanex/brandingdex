@@ -155,9 +155,13 @@ ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" hr
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:image" content="${esc(site.url + ogImage)}">
+<meta property="og:image:alt" content="${esc(title)} portfolio preview">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${esc(site.url + ogImage)}">
 <meta name="theme-color" content="#f3f1e9">
 ${verification}
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">

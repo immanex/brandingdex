@@ -71,7 +71,7 @@ function detail(ctx, item) {
   const workSection = related.length ? `<section class="related-work">
   <div class="section-top">
     <div><div class="eyebrow">FROM THE PORTFOLIO</div><h2>See the thinking.</h2></div>
-    <a class="pill ghost" href="/portfolio/?category=${esc(item.portfolioCategory)}">View more work ↗</a>
+    <a class="pill ghost" href="/portfolio/${esc(item.portfolioCategory)}/">View more work ↗</a>
   </div>
   <div class="card-grid">${related.map(projectCard).join("")}</div>
 </section>` : "";

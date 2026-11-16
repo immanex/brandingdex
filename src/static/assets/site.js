@@ -100,20 +100,119 @@ const portfolioTabs = [...document.querySelectorAll("[data-filter]")];
 const portfolioCards = [...document.querySelectorAll("#portfolio-grid [data-category]")];
 
 if (portfolioTabs.length && portfolioCards.length) {
-  const activatePortfolioTab = category => {
-    portfolioTabs.forEach(tab => tab.setAttribute("aria-pressed", String(tab.dataset.filter === category)));
+  const heading = document.querySelector("#portfolio-heading");
+  const description = document.querySelector("#portfolio-description");
+  const defaultHeading = "Our thinking.<br>Made <em>visible.</em>";
+  const updatePortfolioMetadata = tab => {
+    if (!tab) return;
+    const title = tab.dataset.title;
+    const summary = tab.dataset.description;
+    const image = tab.dataset.ogImage;
+    if (title) {
+      document.title = title;
+      const openGraphTitle = document.querySelector('meta[property="og:title"]');
+      if (openGraphTitle) openGraphTitle.content = title;
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) twitterTitle.content = title;
+    }
+    if (summary) {
+      const metaDescription = document.querySelector('meta[name="description"]');
+      const openGraphDescription = document.querySelector('meta[property="og:description"]');
+      if (metaDescription) metaDescription.content = summary;
+      if (openGraphDescription) openGraphDescription.content = summary;
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+      if (twitterDescription) twitterDescription.content = summary;
+      if (description) description.textContent = summary;
+    }
+    if (image) {
+      const openGraphImage = document.querySelector('meta[property="og:image"]');
+      if (openGraphImage) openGraphImage.content = new URL(image, location.origin).href;
+      const twitterImage = document.querySelector('meta[name="twitter:image"]');
+      if (twitterImage) twitterImage.content = new URL(image, location.origin).href;
+    }
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const openGraphUrl = document.querySelector('meta[property="og:url"]');
+    if (canonical) canonical.href = new URL(tab.href, location.origin).href;
+    if (openGraphUrl) openGraphUrl.content = new URL(tab.href, location.origin).href;
+  };
+  const activatePortfolioTab = (category, { updateUrl = false, replaceUrl = false } = {}) => {
+    const activeTab = portfolioTabs.find(tab => tab.dataset.filter === category) || portfolioTabs[0];
+    category = activeTab.dataset.filter;
+    portfolioTabs.forEach(tab => {
+      if (tab.dataset.filter === category) tab.setAttribute("aria-current", "page");
+      else tab.removeAttribute("aria-current");
+    });
     portfolioCards.forEach(card => {
       card.hidden = category !== "all" && card.dataset.category !== category;
     });
     const count = portfolioCards.filter(card => !card.hidden).length;
     const status = document.querySelector("#count");
     if (status) status.textContent = `Showing ${count} project${count === 1 ? "" : "s"}`;
+    if (heading) heading.innerHTML = category === "all" ? defaultHeading : activeTab.dataset.heading;
+    updatePortfolioMetadata(activeTab);
+    if (updateUrl || replaceUrl) {
+      history[replaceUrl ? "replaceState" : "pushState"]({ portfolioCategory: category }, "", activeTab.href);
+    }
+  };
+  const categoryFromLocation = () => {
+    const requested = new URLSearchParams(location.search).get("category");
+    if (location.pathname === "/portfolio/" && portfolioTabs.some(tab => tab.dataset.filter === requested)) return requested;
+    const routeTab = portfolioTabs.find(tab => new URL(tab.href).pathname === location.pathname);
+    if (routeTab) return routeTab.dataset.filter;
+    return portfolioTabs.some(tab => tab.dataset.filter === requested) ? requested : "all";
   };
   const requested = new URLSearchParams(location.search).get("category");
-  const initial = portfolioTabs.some(tab => tab.dataset.filter === requested) ? requested : "all";
-  portfolioTabs.forEach(tab => tab.addEventListener("click", () => activatePortfolioTab(tab.dataset.filter)));
-  activatePortfolioTab(initial);
+  const initial = categoryFromLocation();
+  portfolioTabs.forEach(tab => tab.addEventListener("click", event => {
+    event.preventDefault();
+    activatePortfolioTab(tab.dataset.filter, { updateUrl: true });
+  }));
+  activatePortfolioTab(initial, { replaceUrl: Boolean(requested) });
+  window.addEventListener("popstate", () => activatePortfolioTab(categoryFromLocation()));
+
+  const copyCategoryButton = document.querySelector("[data-copy-portfolio-link]");
+  copyCategoryButton?.addEventListener("click", async () => {
+    const activeTab = portfolioTabs.find(tab => tab.getAttribute("aria-current") === "page") || portfolioTabs[0];
+    const status = document.querySelector("[data-portfolio-copy-status]");
+    const copied = await copyLink(activeTab.href);
+    if (status) status.textContent = copied ? "Link copied" : "Copy unavailable — share the address in your browser bar.";
+    copyCategoryButton.classList.toggle("is-copied", copied);
+    window.setTimeout(() => {
+      if (status) status.textContent = "";
+      copyCategoryButton.classList.remove("is-copied");
+    }, 2400);
+  });
 }
+
+async function copyLink(value) {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+  } catch {}
+  const field = document.createElement("textarea");
+  field.value = value;
+  field.setAttribute("readonly", "");
+  field.style.position = "fixed";
+  field.style.opacity = "0";
+  document.body.append(field);
+  field.select();
+  let copied = false;
+  try { copied = document.execCommand("copy"); } catch {}
+  field.remove();
+  return copied;
+}
+
+document.querySelectorAll("[data-copy-project-link]").forEach(button => {
+  button.addEventListener("click", async () => {
+    const copied = await copyLink(location.href);
+    button.textContent = copied ? "Project link copied" : "Copy unavailable — use the browser address bar.";
+    window.setTimeout(() => {
+      button.innerHTML = 'Copy project link <span aria-hidden="true">&#8599;</span>';
+    }, 2400);
+  });
+});
 
 const siteNav = document.querySelector(".site-nav");
 const navToggle = siteNav?.querySelector(".nav-toggle");

@@ -11,7 +11,7 @@ function cardVisual(project) {
   const fg = color(project.fg);
   if (uploaded(project.cover)) {
     return '<div class="art portfolio-art cover-art" style="--bg:' + bg + ";--fg:" + fg + '">' +
-      '<img src="' + esc(project.cover) + '" alt="' + esc(project.name + " — " + project.type) + '" loading="lazy"></div>';
+      '<img src="' + esc(project.cover) + '" alt="' + esc(project.collection ? project.name : project.name + " \u2014 " + project.type) + '" loading="lazy"></div>';
   }
   if (project.cat === "website" || project.cat === "combined") {
     return '<div class="art portfolio-art portfolio-web-art" style="--bg:' + bg + ";--fg:" + fg + '" role="img" aria-label="' + esc(project.name + " website design concept") + '">' +
@@ -30,11 +30,11 @@ function cardVisual(project) {
 
 const initials = name => name.split(/\s+/).map(word => word.slice(0, 1)).join("").slice(0, 2).toUpperCase();
 
-export function projectCard(project) {
-  const label = project.inHouse ? "In-house product" : project.concept ? "Illustrative concept" : "Project";
-  return '<a class="project-card" data-category="' + esc(project.cat) + '" href="/work/' + esc(project.slug) + '/">' +
+export function projectCard(project, { hidden = false } = {}) {
+  const label = project.collection ? "Selected portfolio collection" : project.inHouse ? "In-house product" : project.concept ? "Illustrative concept" : "Project";
+  return '<a class="project-card" data-category="' + esc(project.cat) + '" href="/work/' + esc(project.slug) + '/"' + (hidden ? ' hidden' : '') + '>' +
     cardVisual(project) +
-    '<div class="project-title"><span>' + esc(project.name + " — " + project.type) + "</span><span>↗</span></div>" +
+    '<div class="project-title"><span>' + esc(project.collection ? project.name : project.name + " \u2014 " + project.type) + "</span><span>↗</span></div>" +
     '<div class="tags">' + esc(project.tag) + "</div>" +
     '<div class="concept-label">' + label + " / View case study</div></a>";
 }
