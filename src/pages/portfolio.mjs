@@ -34,13 +34,13 @@ const CATEGORY_DETAILS = {
     description: "Explore connected brand and website work, designed to carry one clear story across every touchpoint."
   },
   stationery: {
-    heading: "Stationery, all in one place",
-    description: "Browse business cards, invoices, letterheads and other printed brand pieces together. Open any design to view it larger.",
+    heading: "Stationery & business documents",
+    description: "A collection of business cards, letterheads and invoices, each shaped by the visual language of its brand.",
     ogImage: "/assets/og/portfolio-stationery.png"
   },
   merchandise: {
     heading: "Branded merchandise",
-    description: "Browse five apparel and merchandise mockups. Open any design to see it larger and move through the collection.",
+    description: "Apparel and everyday products shaped by distinct brand identities, from coordinated teamwear to customer-facing pieces.",
     ogImage: "/assets/og/portfolio-merchandise.png"
   }
 };
