@@ -12,7 +12,7 @@ const FILTERS = [
   { id: "product", label: "Digital product" },
   { id: "combined", label: "Brand & website" },
   { id: "stationery", label: "Stationery" },
-  { id: "print-merchandise", label: "Print & merchandise" }
+  { id: "merchandise", label: "Merchandise" }
 ];
 
 const CATEGORY_DETAILS = {
@@ -34,13 +34,14 @@ const CATEGORY_DETAILS = {
     description: "Explore connected brand and website work, designed to carry one clear story across every touchpoint."
   },
   stationery: {
-    heading: "Stationery with a sense of place",
-    description: "Explore stationery concepts that bring identity systems into business cards, documents and everyday communication."
+    heading: "Stationery, all in one place",
+    description: "Browse business cards, invoices, letterheads and other printed brand pieces together. Open any design to view it larger.",
+    ogImage: "/assets/og/portfolio-stationery.png"
   },
-  "print-merchandise": {
-    heading: "Print and merchandise, made memorable",
-    description: "Explore business stationery, invoices, letterheads and branded merchandise designed to carry each identity into everyday use.",
-    ogImage: "/assets/og/portfolio-print-merchandise.png"
+  merchandise: {
+    heading: "Branded merchandise",
+    description: "Browse five apparel and merchandise mockups. Open any design to see it larger and move through the collection.",
+    ogImage: "/assets/og/portfolio-merchandise.png"
   }
 };
 
@@ -90,9 +91,42 @@ function caseGalleryMarkup(project, gallery, galleryTitle) {
 </dialog>`;
 }
 
+function collectionGalleryMarkup(project, { compact = false } = {}) {
+  const gallery = project.gallery || [];
+  if (!gallery.length) return "";
+  const titleId = `${project.slug}-collection-title`;
+  const dialogTitleId = `${project.slug}-viewer-headline`;
+  const tiles = gallery.map((screen, index) => {
+    const label = screen.label || `Design ${String(index + 1).padStart(2, "0")}`;
+    const headline = screen.headline || project.name;
+    const image = screen.image || project.cover;
+    return `<figure class="portfolio-collection-tile">
+      <a class="portfolio-collection-preview" href="${esc(image)}" data-collection-open="${index}" data-collection-label="${esc(label)}" data-collection-headline="${esc(headline)}" data-collection-body="${esc(screen.body || "")}" aria-label="Open ${esc(headline)}">
+        <img src="${esc(image)}" alt="${esc(headline)}" loading="eager" decoding="async">
+        <span>View design <span aria-hidden="true">&#8599;</span></span>
+      </a>
+      <figcaption><small>${esc(label)}</small><h3>${esc(headline)}</h3></figcaption>
+    </figure>`;
+  }).join("");
+  const first = gallery[0];
+
+  return `<section class="portfolio-collection" data-collection-gallery data-collection-project aria-labelledby="${titleId}" data-collection-size="${gallery.length}">
+  ${compact ? `<h2 class="visually-hidden" id="${titleId}">${esc(project.name)} designs</h2>` : `<header class="portfolio-collection-heading"><div><div class="eyebrow">${esc(project.type)} / ${gallery.length} DESIGNS</div><h2 id="${titleId}">${esc(project.name)}</h2><p>${esc(project.tag)}</p></div></header>`}
+  <div class="portfolio-collection-grid" data-category="${esc(project.cat)}">${tiles}</div>
+  <dialog class="portfolio-collection-dialog" data-collection-dialog aria-labelledby="${dialogTitleId}">
+    <div class="portfolio-collection-dialog-shell">
+      <header class="portfolio-collection-dialog-head"><div><span data-collection-label>${esc(first.label || "")}</span><h2 id="${dialogTitleId}" data-collection-headline>${esc(first.headline || project.name)}</h2></div><button type="button" data-collection-close aria-label="Close design preview">&#215;</button></header>
+      <div class="portfolio-collection-viewer"><img src="${esc(first.image || project.cover)}" alt="${esc(first.headline || project.name)}" data-collection-image><p data-collection-body>${esc(first.body || "")}</p></div>
+      <footer class="portfolio-collection-controls"><button type="button" data-collection-prev aria-label="Previous design">&#8592;</button><span data-collection-position aria-live="polite">01 / ${String(gallery.length).padStart(2, "0")}</span><button type="button" data-collection-next aria-label="Next design">&#8594;</button></footer>
+    </div>
+  </dialog>
+</section>`;
+}
+
 function index(ctx, category = "all") {
   const { site, projects } = ctx;
-  const count = id => id === "all" ? projects.length : projects.filter(project => project.cat === id).length;
+  const count = id => id === "all" ? projects.length : projects.filter(project => project.cat === id)
+    .reduce((total, project) => total + (project.collection ? (project.gallery?.length || 0) : 1), 0);
   const selected = FILTERS.find(filter => filter.id === category) || FILTERS[0];
   const categoryDetails = CATEGORY_DETAILS[category];
   const categoryPath = id => id === "all" ? "/portfolio/" : `/portfolio/${id}/`;
@@ -101,6 +135,12 @@ function index(ctx, category = "all") {
   const pageTitle = categoryDetails ? `${selected.label} Portfolio | Brandingdex` : defaultTitle;
   const pageDescription = categoryDetails?.description || defaultDescription;
   const categoryProjects = projects.filter(project => project.cat === category);
+  const collectionProjects = category === "all" ? [] : categoryProjects.filter(project => project.collection);
+  const cardProjects = category === "all" ? projects : categoryProjects.filter(project => !project.collection);
+  const collectionSections = collectionProjects.map(project => collectionGalleryMarkup(project, { compact: true })).join("");
+  const projectCards = cardProjects.length
+    ? `<div class="portfolio-grid" id="portfolio-grid" aria-label="Portfolio projects">${cardProjects.map(project => projectCard(project)).join("")}</div>`
+    : "";
   const imageFor = id => {
     const details = CATEGORY_DETAILS[id];
     const items = projects.filter(project => project.cat === id);
@@ -114,7 +154,8 @@ function index(ctx, category = "all") {
     return `<a href="${categoryPath(filter.id)}" data-filter="${filter.id}" data-heading="${esc(details?.heading || "Our thinking. Made visible.")}" data-title="${esc(title)}" data-description="${esc(description)}" data-og-image="${esc(imageFor(filter.id))}"${filter.id === category ? ' aria-current="page"' : ""}>${filter.label} <span>${String(count(filter.id)).padStart(2, "0")}</span></a>`;
   }).join("");
   const hasConcepts = (category === "all" ? projects : categoryProjects).some(project => project.concept);
-  const visibleCount = category === "all" ? projects.length : categoryProjects.length;
+  const visibleCount = category === "all" ? projects.length : count(category);
+  const visibleUnit = collectionProjects.length && !cardProjects.length ? "designs" : "projects";
   const logoShowcase = category === "all" ? `<section class="logo-showcase" aria-labelledby="logo-showcase-title">
   <div class="logo-showcase-head">
     <div><div class="eyebrow">SELECTED LOGO &amp; IDENTITY WORK</div><h2 id="logo-showcase-title">Distinct marks.<br>Different worlds.</h2></div>
@@ -123,15 +164,16 @@ function index(ctx, category = "all") {
   <div class="logo-mark-grid">${logoMarks.map(mark => `<figure class="logo-mark-card"><div class="logo-mark-image"><img src="${esc(mark.image)}" alt="${esc(mark.name)} identity design" loading="lazy"></div><figcaption>${esc(mark.name)}</figcaption></figure>`).join("")}</div>
 </section>` : "";
 
-  const body = `<header class="portfolio-intro">
+  const body = `<header class="portfolio-intro" data-category-page="${esc(category)}">
   <div class="eyebrow">${categoryDetails ? `SELECTED WORK / ${esc(selected.label.toUpperCase())}` : "THE PORTFOLIO / BRANDINGDEX"}</div>
   <h1 id="portfolio-heading">${categoryDetails ? esc(categoryDetails.heading) : "Our thinking.<br>Made <em>visible.</em>"}</h1>
   <p id="portfolio-description">${categoryDetails ? esc(categoryDetails.description) : "Explore brand identity, website and digital product work for ambitious businesses. Each case study shows the thinking behind the design."}</p>
   ${hasConcepts ? '<p class="small">Illustrative concepts are clearly marked. They show our creative direction and do not represent client projects.</p>' : ""}
   <div class="filters" role="group" aria-label="Filter projects">${filters}</div>
-  <div class="portfolio-filter-footer"><p class="portfolio-count" role="status" id="count">Showing ${visibleCount} project${visibleCount === 1 ? "" : "s"}</p><button type="button" class="portfolio-share-button" data-copy-portfolio-link>Copy this view's link <span aria-hidden="true">&#8599;</span></button><span class="portfolio-copy-status" data-portfolio-copy-status role="status" aria-live="polite"></span></div>
+  <div class="portfolio-filter-footer"><p class="portfolio-count" role="status" id="count">Showing ${visibleCount} ${visibleUnit}</p><button type="button" class="portfolio-share-button" data-copy-portfolio-link>Copy this view's link <span aria-hidden="true">&#8599;</span></button><span class="portfolio-copy-status" data-portfolio-copy-status role="status" aria-live="polite"></span></div>
 </header>
-<div class="portfolio-grid" id="portfolio-grid" aria-label="Portfolio projects">${projects.map(project => projectCard(project, { hidden: category !== "all" && project.cat !== category })).join("")}</div>
+${collectionSections}
+${projectCards}
 ${logoShowcase}
 ${ctaBand({ className: "portfolio-contact" })}`;
 
@@ -158,7 +200,7 @@ function caseStudy(ctx, project, position) {
   }];
   const next = projects[(position + 1) % projects.length];
   const status = project.collection ? "Selected portfolio collection" : project.inHouse ? "In-house SaaS product" : project.concept ? "Self-initiated concept<br>No client affiliation" : "Client project";
-  const galleryTitle = project.cat === "website" ? "Website screens." : project.cat === "stationery" ? "Designs in use." : project.cat === "print-merchandise" ? "Print and merchandise, in use." : project.cat === "product" ? "Inside the product." : "Identity, in detail.";
+  const galleryTitle = project.cat === "website" ? "Website screens." : project.cat === "stationery" ? "Stationery designs." : project.cat === "merchandise" ? "Branded merchandise." : project.cat === "product" ? "Inside the product." : "Identity, in detail.";
   const path = "/work/" + project.slug + "/";
   const ogImage = ogImages.has(project.slug) ? "/assets/og/" + project.slug + ".png" : (project.cover || DEFAULT_OG);
 
@@ -177,7 +219,7 @@ function caseStudy(ctx, project, position) {
   </div>
   ${project.liveUrl ? `<p class="case-live-link"><a class="text-link" href="${esc(project.liveUrl)}" target="_blank" rel="noopener">Explore the live product <span aria-hidden="true">&#8599;</span></a></p>` : ""}
 </header>
-${caseGalleryMarkup(project,gallery,galleryTitle)}
+${project.collection ? collectionGalleryMarkup(project) : caseGalleryMarkup(project,gallery,galleryTitle)}
 <section class="case-story"><h2>The challenge.</h2><p>${esc(project.challenge)}</p></section>
 <section class="case-story approach-story"><h2>The design approach.</h2><div>
   <p>${esc(project.approach)}</p>

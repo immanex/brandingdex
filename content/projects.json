@@ -221,165 +221,183 @@
     ]
   },
   {
-    "slug": "stationery-and-merchandise",
-    "name": "Stationery & merchandise",
-    "type": "Print & merchandise",
-    "cat": "print-merchandise",
+    "slug": "stationery-designs",
+    "name": "Stationery & business documents",
+    "type": "Stationery design",
+    "cat": "stationery",
     "bg": "#e8e7de",
     "fg": "#233b35",
-    "tag": "Brand identities, made useful in everyday life.",
-    "headline": "A collection of everyday brand touchpoints.",
-    "challenge": "Brand identities need to stay consistent across the small things people use every day—from business cards and invoices to uniforms and reusable items.",
-    "approach": "This selected collection brings together stationery layouts and branded merchandise for different businesses. Each image shows an individual design, from contact cards and document systems to apparel and practical promotional pieces.",
-    "scope": "Business cards · Letterheads · Invoices · Staff apparel · Branded merchandise",
-    "deliver": "A curated image set spanning business stationery and merchandise applications for a range of brands.",
+    "tag": "Clear brand details, ready for daily work.",
+    "headline": "Business stationery designed to work.",
+    "challenge": "Business stationery needs to communicate clearly while carrying a recognizable identity across cards, invoices and formal correspondence.",
+    "approach": "This selection brings together business cards, letterheads, invoices and stationery layouts from different brand systems. Each design keeps essential details legible while making the identity feel consistent.",
+    "scope": "Business cards · Letterheads · Invoices · Document layouts",
+    "deliver": "A selected stationery collection spanning 16 business card, letterhead, invoice and document designs.",
     "collection": true,
-    "cover": "/assets/portfolio/print-merchandise/21-yokoli-branded-merchandise.jpg",
+    "cover": "/assets/portfolio/stationery-designs/01-brandingdex-business-cards.jpg",
     "gallery": [
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/01-brandingdex-business-cards.jpg",
+        "image": "/assets/portfolio/stationery-designs/01-brandingdex-business-cards.jpg",
         "label": "01 / Brandingdex business cards",
         "headline": "Identity, distilled into a first impression.",
         "body": "A two-sided studio card carries the Brandingdex mark, palette and contact details into a useful everyday format."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/02-azuc-festus-business-cards.jpg",
+        "image": "/assets/portfolio/stationery-designs/02-azuc-festus-business-cards.jpg",
         "label": "02 / Azuc C. Festus business cards",
         "headline": "A clear introduction, in hand.",
         "body": "A blue and cyan business card set balances the personal name, role and contact information."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/03-omg-leadway-business-cards.jpg",
+        "image": "/assets/portfolio/stationery-designs/03-omg-leadway-business-cards.jpg",
         "label": "03 / OMG Leadway business cards",
         "headline": "A memorable mark meets a practical layout.",
         "body": "A coordinated card presentation pairs a distinctive symbol with a direct, easy-to-scan information layout."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/04-bridgebroke-business-cards.jpg",
+        "image": "/assets/portfolio/stationery-designs/04-bridgebroke-business-cards.jpg",
         "label": "04 / Bridgebroke business cards",
         "headline": "One identity, carried across both sides.",
         "body": "A bold blue palette and compact logo system create a recognisable business card pair."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/05-brandingdex-card-application.jpg",
+        "image": "/assets/portfolio/stationery-designs/05-brandingdex-card-application.jpg",
         "label": "05 / Brandingdex card application",
         "headline": "A studio identity made tangible.",
         "body": "An alternate Brandingdex card composition uses warm orange, deep ink and generous contrast."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/06-bridgebroke-card-system.jpg",
+        "image": "/assets/portfolio/stationery-designs/06-bridgebroke-card-system.jpg",
         "label": "06 / Bridgebroke card system",
         "headline": "Small format. Consistent brand presence.",
         "body": "A repeated Bridgebroke card composition carries the blue mark, contact details and service information across both sides."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/07-orange-business-stationery.jpg",
+        "image": "/assets/portfolio/stationery-designs/07-orange-business-stationery.jpg",
         "label": "07 / Orange business stationery",
         "headline": "A bold identity across useful print pieces.",
         "body": "An orange and white stationery set brings the logo and brand colour into day-to-day business communication."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/08-branded-letterhead.jpg",
+        "image": "/assets/portfolio/stationery-designs/08-branded-letterhead.jpg",
         "label": "08 / Branded letterhead",
         "headline": "A quiet frame for business correspondence.",
         "body": "A restrained letterhead layout gives the brand mark space while keeping the page ready for clear communication."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/09-bridgebroke-letterhead.jpg",
+        "image": "/assets/portfolio/stationery-designs/09-bridgebroke-letterhead.jpg",
         "label": "09 / Bridgebroke letterhead",
         "headline": "A corporate document with a clear signature.",
         "body": "A blue header, watermark and footer establish hierarchy across a formal business letter."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/10-azuc-festus-card-presentation.jpg",
+        "image": "/assets/portfolio/stationery-designs/10-azuc-festus-card-presentation.jpg",
         "label": "10 / Azuc C. Festus card presentation",
         "headline": "A consistent personal identity across print.",
         "body": "A paired business card layout connects the name, professional role and contact details."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/11-azuc-festus-letterhead.jpg",
+        "image": "/assets/portfolio/stationery-designs/11-azuc-festus-letterhead.jpg",
         "label": "11 / Azuc C. Festus letterhead",
         "headline": "A professional page, ready for the message.",
         "body": "The personal identity extends from business cards into a matching letterhead."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/12-omg-leadway-card-alternate.jpg",
+        "image": "/assets/portfolio/stationery-designs/12-omg-leadway-card-alternate.jpg",
         "label": "12 / Business letterhead design",
         "headline": "A second card presentation for the OMG Leadway identity.",
         "body": "This alternate layout pairs the company mark with clear director contact details."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/13-azuc-festus-invoice.jpg",
+        "image": "/assets/portfolio/stationery-designs/13-azuc-festus-invoice.jpg",
         "label": "13 / Azuc C. Festus invoice",
         "headline": "An invoice designed to scan quickly.",
         "body": "A structured invoice layout organises client, item and payment details under the matching identity."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/14-stationery-and-id-cards.jpg",
+        "image": "/assets/portfolio/stationery-designs/14-stationery-and-id-cards.jpg",
         "label": "14 / Stationery and identity card set",
         "headline": "Brand details that work together.",
         "body": "A coordinated print set brings business cards, document layouts and identification pieces into one visual system."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/15-company-letterhead.jpg",
+        "image": "/assets/portfolio/stationery-designs/15-company-letterhead.jpg",
         "label": "15 / Company letterhead",
         "headline": "A brand signature for formal communication.",
         "body": "A typographic wordmark and balanced footer bring the company identity to the page."
       },
       {
         "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/16-letterhead-layout.jpg",
+        "image": "/assets/portfolio/stationery-designs/16-letterhead-layout.jpg",
         "label": "16 / Letterhead layout",
         "headline": "Clear details, considered spacing.",
         "body": "An alternate stationery layout uses a restrained colour palette and keeps essential contact information easy to find."
-      },
+      }
+    ]
+  },
+  {
+    "slug": "branded-merchandise",
+    "name": "Branded merchandise",
+    "type": "Merchandise design",
+    "cat": "merchandise",
+    "bg": "#dce5d5",
+    "fg": "#233b35",
+    "tag": "Brand identities, carried into everyday products.",
+    "headline": "Merchandise that keeps a brand in view.",
+    "challenge": "Apparel and useful promotional items give a brand more places to be recognized, from team uniforms to products customers carry every day.",
+    "approach": "This collection shows five merchandise directions across T-shirts, polo shirts, caps, bags, drinkware and accessories. Each set adapts its own identity to the products and the people who use them.",
+    "scope": "T-shirts · Polo shirts · Caps · Bags · Drinkware · Accessories",
+    "deliver": "Five branded merchandise mockups for Iceconicx, Kintoria, Oriolz, The King Dan Farms and YOKOLI.",
+    "collection": true,
+    "cover": "/assets/portfolio/branded-merchandise/21-yokoli-branded-merchandise.jpg",
+    "gallery": [
       {
-        "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/17-iceconicx-merchandise.jpg",
-        "label": "17 / Iceconicx branded merchandise",
+        "kind": "merchandise",
+        "image": "/assets/portfolio/branded-merchandise/17-iceconicx-merchandise.jpg",
+        "label": "01 / Iceconicx branded merchandise",
         "headline": "A vivid identity, ready to wear.",
         "body": "The Iceconicx cyan palette and graphic mark extend across apparel, headwear and everyday accessories."
       },
       {
-        "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/18-kintoria-polo-shirts.jpg",
-        "label": "18 / Kintoria polo collection",
+        "kind": "merchandise",
+        "image": "/assets/portfolio/branded-merchandise/18-kintoria-polo-shirts.jpg",
+        "label": "02 / Kintoria polo collection",
         "headline": "A retail identity across a clothing range.",
         "body": "The Kintoria mark and colour system appear across coordinated polo shirts."
       },
       {
-        "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/19-oriolz-polo-shirts.jpg",
-        "label": "19 / Oriolz branded polo shirts",
+        "kind": "merchandise",
+        "image": "/assets/portfolio/branded-merchandise/19-oriolz-polo-shirts.jpg",
+        "label": "03 / Oriolz branded polo shirts",
         "headline": "Team apparel with a recognisable signature.",
         "body": "Forest green, white and lime accents carry the Oriolz identity across front and back uniform views."
       },
       {
-        "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/20-king-dan-farms-merchandise.jpg",
-        "label": "20 / The King Dan Farms merchandise set",
+        "kind": "merchandise",
+        "image": "/assets/portfolio/branded-merchandise/20-king-dan-farms-merchandise.jpg",
+        "label": "04 / The King Dan Farms merchandise set",
         "headline": "A farm identity across team and promotional pieces.",
         "body": "Branded shirts, a work vest, cap and bag extend The King Dan Farms visual identity into practical merchandise."
       },
       {
-        "kind": "stationery",
-        "image": "/assets/portfolio/print-merchandise/21-yokoli-branded-merchandise.jpg",
-        "label": "21 / YOKOLI branded merchandise",
+        "kind": "merchandise",
+        "image": "/assets/portfolio/branded-merchandise/21-yokoli-branded-merchandise.jpg",
+        "label": "05 / YOKOLI branded merchandise",
         "headline": "A bright identity across everyday products.",
         "body": "The YOKOLI palette brings apparel, headwear, drinkware and bags together as a coordinated merchandise range."
       }

@@ -99,7 +99,7 @@ if (priceTabs.length && priceGrid && priceCards.length) {
 const portfolioTabs = [...document.querySelectorAll("[data-filter]")];
 const portfolioCards = [...document.querySelectorAll("#portfolio-grid [data-category]")];
 
-if (portfolioTabs.length && portfolioCards.length) {
+if (portfolioTabs.length) {
   const heading = document.querySelector("#portfolio-heading");
   const description = document.querySelector("#portfolio-description");
   const defaultHeading = "Our thinking.<br>Made <em>visible.</em>";
@@ -145,9 +145,10 @@ if (portfolioTabs.length && portfolioCards.length) {
     portfolioCards.forEach(card => {
       card.hidden = category !== "all" && card.dataset.category !== category;
     });
-    const count = portfolioCards.filter(card => !card.hidden).length;
+    const collectionSection = document.querySelector("[data-collection-gallery]");
+    const count = portfolioCards.filter(card => !card.hidden).length + Number(collectionSection?.dataset.collectionSize || 0);
     const status = document.querySelector("#count");
-    if (status) status.textContent = `Showing ${count} project${count === 1 ? "" : "s"}`;
+    if (status) status.textContent = `Showing ${count} ${collectionSection ? "designs" : `project${count === 1 ? "" : "s"}`}`;
     if (heading) heading.innerHTML = category === "all" ? defaultHeading : activeTab.dataset.heading;
     updatePortfolioMetadata(activeTab);
     if (updateUrl || replaceUrl) {
@@ -163,10 +164,11 @@ if (portfolioTabs.length && portfolioCards.length) {
   };
   const requested = new URLSearchParams(location.search).get("category");
   const initial = categoryFromLocation();
-  portfolioTabs.forEach(tab => tab.addEventListener("click", event => {
-    event.preventDefault();
-    activatePortfolioTab(tab.dataset.filter, { updateUrl: true });
-  }));
+  const legacyCategory = new URLSearchParams(location.search).get("category");
+  if (location.pathname === "/portfolio/" && legacyCategory) {
+    const categoryTab = portfolioTabs.find(tab => tab.dataset.filter === legacyCategory);
+    if (categoryTab && categoryTab.dataset.filter !== "all") location.replace(categoryTab.href);
+  }
   activatePortfolioTab(initial, { replaceUrl: Boolean(requested) });
   window.addEventListener("popstate", () => activatePortfolioTab(categoryFromLocation()));
 
@@ -212,6 +214,54 @@ document.querySelectorAll("[data-copy-project-link]").forEach(button => {
       button.innerHTML = 'Copy project link <span aria-hidden="true">&#8599;</span>';
     }, 2400);
   });
+});
+
+document.querySelectorAll("[data-collection-gallery]").forEach(collection => {
+  const dialog = collection.querySelector("[data-collection-dialog]");
+  const links = [...collection.querySelectorAll("[data-collection-open]")];
+  if (!dialog || !links.length) return;
+
+  const image = dialog.querySelector("[data-collection-image]");
+  const label = dialog.querySelector("[data-collection-label]");
+  const headline = dialog.querySelector("[data-collection-headline]");
+  const body = dialog.querySelector("[data-collection-body]");
+  const position = dialog.querySelector("[data-collection-position]");
+  let current = 0;
+  const show = index => {
+    current = (index + links.length) % links.length;
+    const link = links[current];
+    image.src = link.href;
+    image.alt = link.dataset.collectionHeadline || link.getAttribute("aria-label") || "Portfolio design";
+    label.textContent = link.dataset.collectionLabel || "";
+    headline.textContent = link.dataset.collectionHeadline || "";
+    body.textContent = link.dataset.collectionBody || "";
+    position.textContent = `${String(current + 1).padStart(2, "0")} / ${String(links.length).padStart(2, "0")}`;
+  };
+
+  links.forEach((link, index) => link.addEventListener("click", event => {
+    event.preventDefault();
+    show(index);
+    dialog.showModal();
+    dialog.querySelector("[data-collection-close]")?.focus();
+  }));
+  dialog.querySelector("[data-collection-close]")?.addEventListener("click", () => dialog.close());
+  dialog.querySelector("[data-collection-prev]")?.addEventListener("click", () => show(current - 1));
+  dialog.querySelector("[data-collection-next]")?.addEventListener("click", () => show(current + 1));
+  dialog.addEventListener("click", event => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") { event.preventDefault(); show(current - 1); }
+    if (event.key === "ArrowRight") { event.preventDefault(); show(current + 1); }
+  });
+
+  const viewer = dialog.querySelector(".portfolio-collection-viewer");
+  let touchStartX = 0;
+  viewer?.addEventListener("touchstart", event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+  viewer?.addEventListener("touchend", event => {
+    const distance = event.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(distance) > 45) show(current + (distance < 0 ? 1 : -1));
+  }, { passive: true });
 });
 
 const siteNav = document.querySelector(".site-nav");
